@@ -2,14 +2,19 @@ package lsvapp.kitsu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import lsvapp.kitsu.presentation.MainFragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private val navController: NavController by lazy(LazyThreadSafetyMode.NONE) {
+        (supportFragmentManager.findFragmentById(R.id.navigation_container) as NavHostFragment).navController
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().add(R.id.navigation_container, MainFragment())
-            .commit()
+        navController.setGraph(R.navigation.nav_main)
     }
 }

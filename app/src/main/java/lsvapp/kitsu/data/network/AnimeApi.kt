@@ -4,7 +4,7 @@ import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.PageContent
 import retrofit2.http.GET
 
-interface AnimeAPI {
+interface AnimeApi {
 
     @GET("anime")
     suspend fun getAnime(): PageContent<Anime>

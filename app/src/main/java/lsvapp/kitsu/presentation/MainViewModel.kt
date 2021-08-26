@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import lsvapp.kitsu.domain.interactor.KitsuInteractor
+import lsvapp.kitsu.domain.interactor.AnimeInteractor
+import kotlin.Exception
 
 class MainViewModel(
-    private val kitsuInteractor: KitsuInteractor
+    private val animeInteractor: AnimeInteractor
 ) : ViewModel() {
 
     private val _state = MutableLiveData<MainState>()
@@ -22,15 +23,14 @@ class MainViewModel(
     private fun initState() {
         _state.value = MainState.Loading
         viewModelScope.launch {
-//            try {
-                val animeList = kitsuInteractor.getAnime()
-
+            try {
+                val pageContent = animeInteractor.getAnime()
                 _state.value = MainState.Content(
-                    anime = animeList.data
+                    anime = pageContent.data.first().attributes
                 )
-//            } catch (e: Throwable) {
-//                _state.value = MainState.Error(e.message)
-//            }
+            } catch (e: Exception) {
+                _state.value = MainState.Error(e.message)
+            }
         }
     }
 }

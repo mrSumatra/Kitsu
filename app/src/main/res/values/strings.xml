@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Kitsu</string>
+
+<!--    Bottom nav title-->
+    <string name="bottom_nav_title_feed">feed</string>
+    <string name="bottom_nav_title_movie">movie</string>
+    <string name="bottom_nav_title_group">group</string>
+    <string name="bottom_nav_title_profile">profile</string>
+
+
 </resources>

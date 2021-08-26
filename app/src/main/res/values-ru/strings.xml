@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kitsu</string>
+
+<!--    Bottom nav title-->
+    <string name="bottom_nav_title_feed">Лента</string>
+    <string name="bottom_nav_title_movie">Аниме</string>
+    <string name="bottom_nav_title_group">Группы</string>
+    <string name="bottom_nav_title_profile">Профиль</string>
+
+
+</resources>

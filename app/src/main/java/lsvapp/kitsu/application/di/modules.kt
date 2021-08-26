@@ -1,11 +1,14 @@
 package lsvapp.kitsu.application.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import lsvapp.kitsu.utils.BASE_URL
-import lsvapp.kitsu.data.network.AnimeAPI
-import lsvapp.kitsu.data.repository.KitsuRepository
-import lsvapp.kitsu.domain.interactor.KitsuInteractor
+import lsvapp.kitsu.data.network.AnimeApi
+import lsvapp.kitsu.data.repository.AnimeRepository
+import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.presentation.MainViewModel
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Converter
@@ -19,10 +22,23 @@ val dataModules
 
 private val networkModule = module {
 
+    factory<Moshi> {
+        Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+    }
+
     factory<Converter.Factory> { MoshiConverterFactory.create() }
+
+    factory<HttpLoggingInterceptor> {
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
 
     factory<OkHttpClient> {
         OkHttpClient.Builder()
+            .addInterceptor(get<HttpLoggingInterceptor>())
             .build()
     }
 
@@ -30,19 +46,20 @@ private val networkModule = module {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(get())
+            .client(get())
             .build()
     }
 
-    single<AnimeAPI> { get<Retrofit>().create() }
+    single<AnimeApi> { get<Retrofit>().create() }
 
 }
 
 private val repositoryModule = module {
-    single{KitsuRepository(get())}
+    single{AnimeRepository(get())}
 }
 
 private val interactorModule = module {
-    single{ KitsuInteractor(get()) }
+    single{ AnimeInteractor(get()) }
 }
 
 private val viewModelModules = module {

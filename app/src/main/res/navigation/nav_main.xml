@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainTabFragment">
+
+    <fragment
+        android:id="@+id/mainTabFragment"
+        android:name="lsvapp.kitsu.presentation.maintab.MainTabFragment"
+        android:label="MainTabFragment"
+        tools:layout="@layout/fragment_main_tab"
+        />
+
+</navigation>
