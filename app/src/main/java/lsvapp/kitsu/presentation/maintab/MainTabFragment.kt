@@ -26,7 +26,7 @@ class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
     }
 
     private fun showTab(tab: MainTabs) {
-       bottomNavigationView.post {
+        bottomNavigationView.post {
             if (bottomNavigationView.selectedItemId != tab.menuId && tab.menuId != null)
                 bottomNavigationView.selectedItemId = tab.menuId
         }

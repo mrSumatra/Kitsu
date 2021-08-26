@@ -6,7 +6,7 @@ import lsvapp.kitsu.utils.BASE_URL
 import lsvapp.kitsu.data.network.AnimeApi
 import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
-import lsvapp.kitsu.presentation.MainViewModel
+import lsvapp.kitsu.presentation.feed.FeedViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -55,13 +55,13 @@ private val networkModule = module {
 }
 
 private val repositoryModule = module {
-    single{AnimeRepository(get())}
+    single { AnimeRepository(get()) }
 }
 
 private val interactorModule = module {
-    single{ AnimeInteractor(get()) }
+    single { AnimeInteractor(get()) }
 }
 
 private val viewModelModules = module {
-    viewModel { MainViewModel(get()) }
+    viewModel { FeedViewModel(get()) }
 }
