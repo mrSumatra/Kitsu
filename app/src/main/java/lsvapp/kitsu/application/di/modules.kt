@@ -2,11 +2,15 @@ package lsvapp.kitsu.application.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import lsvapp.kitsu.utils.BASE_URL
-import lsvapp.kitsu.data.network.AnimeApi
+import lsvapp.kitsu.data.network.kitsuAPI.AnimeApi
+import lsvapp.kitsu.data.network.kitsuAPI.PostApi
 import lsvapp.kitsu.data.repository.AnimeRepository
+import lsvapp.kitsu.data.repository.PostRepository
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
+import lsvapp.kitsu.domain.interactor.PostInteractor
 import lsvapp.kitsu.presentation.feed.FeedViewModel
+import lsvapp.kitsu.presentation.movie.MovieTabViewModel
+import lsvapp.kitsu.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -51,17 +55,21 @@ private val networkModule = module {
     }
 
     single<AnimeApi> { get<Retrofit>().create() }
+    single<PostApi> { get<Retrofit>().create() }
 
 }
 
 private val repositoryModule = module {
     single { AnimeRepository(get()) }
+    single { PostRepository(get()) }
 }
 
 private val interactorModule = module {
     single { AnimeInteractor(get()) }
+    single { PostInteractor(get()) }
 }
 
 private val viewModelModules = module {
     viewModel { FeedViewModel(get()) }
+    viewModel { MovieTabViewModel(get()) }
 }

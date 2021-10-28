@@ -4,35 +4,28 @@ import androidx.fragment.app.Fragment
 import lsvapp.kitsu.R
 
 enum class MainTabs(
-    val newInstanceAction: () -> Fragment,
+    val tag: TabTag,
     val menuId: Int? = null,
-    val tag: TabTag
+    val newInstanceAction: () -> Fragment,
 ) {
     FEED(
-        { lsvapp.kitsu.presentation.feed.FeedTabFragment() },
         tag = TabTag.FEED,
-        menuId = R.id.tab_feed
+        menuId = R.id.tab_feed,
+        newInstanceAction = { lsvapp.kitsu.presentation.feed.FeedTabFragment() }
     ),
     MOVIE(
-        { lsvapp.kitsu.presentation.movie.MovieTabFragment() },
         tag = TabTag.MOVIE,
-        menuId = R.id.tab_movie
+        menuId = R.id.tab_movie,
+        newInstanceAction = { lsvapp.kitsu.presentation.movie.MovieTabFragment() }
     ),
     GROPE(
-        { lsvapp.kitsu.presentation.group.GroupTabFragment() },
         tag = TabTag.GROPE,
-        menuId = R.id.tab_group
+        menuId = R.id.tab_group,
+        newInstanceAction = { lsvapp.kitsu.presentation.group.GroupTabFragment() }
     ),
     PROFILE(
-        { lsvapp.kitsu.presentation.profile.ProfileTabFragment() },
         tag = TabTag.PROFILE,
-        menuId = R.id.tab_profile
+        menuId = R.id.tab_profile,
+        newInstanceAction = { lsvapp.kitsu.presentation.profile.ProfileTabFragment() }
     )
-}
-
-enum class TabTag {
-    FEED,
-    MOVIE,
-    GROPE,
-    PROFILE
 }

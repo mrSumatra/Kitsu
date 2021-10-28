@@ -1,4 +1,4 @@
-package lsvapp.kitsu.data.network
+package lsvapp.kitsu.data.network.kitsuAPI
 
 import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.PageContent

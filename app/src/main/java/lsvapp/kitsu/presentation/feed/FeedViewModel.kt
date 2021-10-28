@@ -4,32 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
+import lsvapp.kitsu.domain.interactor.PostInteractor
 
 class FeedViewModel(
-    private val animeInteractor: AnimeInteractor
+    private val postInteractor: PostInteractor
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<FeedState>()
+    private val _state = MutableLiveData<FeedState>(FeedState.Loading)
     val state: LiveData<FeedState> = _state
 
     init {
         initState()
     }
 
-    private val exceptionHandler: CoroutineExceptionHandler =
-        CoroutineExceptionHandler { _, exception ->
-            _state.value = FeedState.Error(exception.message)
-        }
-
     private fun initState() {
         _state.value = FeedState.Loading
-        viewModelScope.launch(exceptionHandler) {
-            val pageContent = animeInteractor.getAnime()
+        viewModelScope.launch {
+            val pageContent = postInteractor.getPosts()
             _state.value = FeedState.Content(
-                anime = pageContent.data.first().attributes
+                posts = pageContent.data.map {
+                    it.attributes
+                }
             )
         }
     }
