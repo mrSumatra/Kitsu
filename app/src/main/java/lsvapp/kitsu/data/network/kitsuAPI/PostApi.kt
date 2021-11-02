@@ -1,6 +1,5 @@
 package lsvapp.kitsu.data.network.kitsuAPI
 
-import lsvapp.kitsu.domain.entity.Data
 import lsvapp.kitsu.domain.entity.Page
 import lsvapp.kitsu.domain.entity.PageContent
 import lsvapp.kitsu.domain.entity.dto.PostDto
