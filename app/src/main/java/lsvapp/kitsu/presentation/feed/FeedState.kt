@@ -6,5 +6,5 @@ sealed class FeedState {
 
     data class Error(val message: String?) : FeedState()
     object Loading : FeedState()
-    data class Content(val posts: List<Post>) : FeedState()
+    data class Content(val post: List<Post>) : FeedState()
 }

@@ -2,6 +2,7 @@ package lsvapp.kitsu.presentation.feed
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import lsvapp.kitsu.R
@@ -23,18 +24,18 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
     }
 
     private fun initState() {
-        viewModel.state.observe(viewLifecycleOwner) {
-            when (it) {
-                is FeedState.Loading -> println("==== LOADING")
-                is FeedState.Content -> initContent(it.posts)
-                is FeedState.Error -> println("==== ERRORR = ${it.message}")
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            binding.loading.isVisible = state is FeedState.Loading
+
+            if (state is FeedState.Content) {
+                initContent(state.post)
             }
         }
     }
 
-    private fun initContent(posts: List<Post>) {
+    private fun initContent(post: List<Post>) {
         val adapter = PostAdapter()
-        adapter.items = posts.map { PostAdapterItem(it) }
+        adapter.items = post.map { PostAdapterItem(it) }
         binding.content.adapter = adapter
         binding.content.layoutManager = LinearLayoutManager(requireContext())
     }

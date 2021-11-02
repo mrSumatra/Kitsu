@@ -1,18 +1,30 @@
 package lsvapp.kitsu.domain.entity
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-
-@JsonClass(generateAdapter = true)
 data class Post(
 
-    @Json(name = "content")
+    /**
+     * Ид
+     */
+    val id: Long,
+
+    /**
+     * Автор поста
+     */
+    val author: User,
+
+    /**
+     * Контент
+     */
     val content: String,
 
-    @Json(name = "commentsCount")
+    /**
+     * Кол-во коментариев
+     */
     val commentsCount: Int,
 
-    @Json(name = "postLikesCount")
-    val postLikesCount: Int,
+    /**
+     * Кол-во лайков
+     */
+    val postLikesCount: Int
 
 )

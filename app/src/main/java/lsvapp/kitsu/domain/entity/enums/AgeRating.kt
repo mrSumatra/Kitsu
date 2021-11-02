@@ -1,4 +1,4 @@
-package lsvapp.kitsu.domain.entity.enum
+package lsvapp.kitsu.domain.entity.enums
 
 import androidx.annotation.Keep
 import com.squareup.moshi.JsonClass

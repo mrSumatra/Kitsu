@@ -6,4 +6,6 @@ class PostInteractor(
     private val postRepository: PostRepository
 ) {
     suspend fun getPosts() = postRepository.getPosts()
+
+    suspend fun getAuthorPostUser(postId: Long) = postRepository.getAuthorPostUser(postId)
 }

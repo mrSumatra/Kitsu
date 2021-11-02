@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/author_avatar"
-        android:layout_width="@dimen/spacing_xlarge"
-        android:layout_height="@dimen/spacing_xlarge"
+        android:layout_width="@dimen/spacing_xxlarge"
+        android:layout_height="@dimen/spacing_xxlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_small"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/author_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/author_avatar"
         app:layout_constraintTop_toTopOf="@+id/author_avatar">

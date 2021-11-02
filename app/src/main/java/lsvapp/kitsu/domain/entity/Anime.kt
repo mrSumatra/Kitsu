@@ -2,7 +2,7 @@ package lsvapp.kitsu.domain.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import lsvapp.kitsu.domain.entity.enum.AgeRating
+import lsvapp.kitsu.domain.entity.enums.AgeRating
 
 @JsonClass(generateAdapter = true)
 data class Anime(

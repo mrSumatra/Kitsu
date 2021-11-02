@@ -6,4 +6,7 @@ class PostRepository(
     private val postApi: PostApi
 ) {
     suspend fun getPosts() = postApi.getPosts()
+
+    suspend fun getAuthorPostUser(id: Long) = postApi.getAuthorPostUser(id)
+
 }
