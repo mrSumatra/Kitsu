@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
     android:layout_marginVertical="@dimen/spacing_small"
-    android:background="@color/white"
+    android:background="@color/gray"
     android:padding="@dimen/spacing_normal">
 
     <ImageView
         android:id="@+id/author_avatar"
         android:layout_width="@dimen/spacing_xxlarge"
         android:layout_height="@dimen/spacing_xxlarge"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -60,7 +62,8 @@
         android:layout_marginTop="@dimen/spacing_normal"
         android:alpha="0.5"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/content_text"></View>
+        app:layout_constraintTop_toBottomOf="@+id/content_text">
+    </View>
 
     <TextView
         android:id="@+id/like"
@@ -71,7 +74,8 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/view"
         android:drawablePadding="@dimen/spacing_small"
-        tools:text="10"></TextView>
+        tools:text="10">
+    </TextView>
 
     <TextView
         android:id="@+id/comments"
@@ -82,7 +86,8 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/view"
         android:drawablePadding="@dimen/spacing_small"
-        tools:text="10"></TextView>
+        tools:text="10">
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

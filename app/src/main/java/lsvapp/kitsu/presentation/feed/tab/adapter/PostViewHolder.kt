@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.feed.adapter
+package lsvapp.kitsu.presentation.feed.tab.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -22,6 +22,14 @@ class PostViewHolder(
         binding.contentText.text = item.post.content
         binding.like.text = item.post.postLikesCount.toString()
         binding.comments.text = item.post.commentsCount.toString()
+
+        binding.authorAvatar.setOnClickListener {
+            item.openProfile.invoke()
+        }
+
+        binding.root.setOnClickListener {
+            item.openPost.invoke()
+        }
     }
 
 }

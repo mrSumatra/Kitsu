@@ -19,6 +19,8 @@ class PostRepository(
 
     suspend fun getPosts() = postStore.get(PostQuery())
 
+    suspend fun getPostsById(id: Long) = postApi.getPostsById(id)
+
     suspend fun getAuthorPostUser(id: Long) = postApi.getAuthorPostUser(id)
 
 }

@@ -7,5 +7,7 @@ class PostInteractor(
 ) {
     suspend fun getPosts() = postRepository.getPosts()
 
+    suspend fun getPostsById(id: Long) = postRepository.getPostsById(id)
+
     suspend fun getAuthorPostUser(postId: Long) = postRepository.getAuthorPostUser(postId)
 }

@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.feed
+package lsvapp.kitsu.presentation.feed.tab
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,20 +9,20 @@ import kotlinx.coroutines.launch
 import lsvapp.kitsu.domain.DtoConverter
 import lsvapp.kitsu.domain.interactor.PostInteractor
 
-class FeedViewModel(
+class FeedViewTabModel(
     private val postInteractor: PostInteractor,
     private val dtoConverter: DtoConverter
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<FeedState>()
-    val state: LiveData<FeedState> = _state
+    private val _state = MutableLiveData<FeedTabState>()
+    val state: LiveData<FeedTabState> = _state
 
     init {
         initState()
     }
 
     private fun initState() {
-        _state.value = FeedState.Loading
+        _state.value = FeedTabState.Loading
         viewModelScope.launch {
             val postsDto = postInteractor.getPosts()
             val posts = postsDto.data.map { post->
@@ -30,7 +30,7 @@ class FeedViewModel(
                 val author = dtoConverter.dataToUser(userDto.await().data)
                 dtoConverter.dataToPost(data = post, author = author)
             }
-            _state.value = FeedState.Content(post = posts)
+            _state.value = FeedTabState.Content(post = posts)
         }
     }
 }

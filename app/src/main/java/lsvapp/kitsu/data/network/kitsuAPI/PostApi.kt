@@ -12,6 +12,9 @@ interface PostApi {
     @GET("posts")
     suspend fun getPosts(): PageContent<PostDto>
 
+    @GET("posts/{id}")
+    suspend fun getPostsById(@Path("id") id: Long): Page<PostDto>
+
     @GET("posts/{id}/user")
     suspend fun getAuthorPostUser(@Path("id") id: Long): Page<UserDto>
 

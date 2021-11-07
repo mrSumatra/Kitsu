@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.feed.adapter
+package lsvapp.kitsu.presentation.feed.tab.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
