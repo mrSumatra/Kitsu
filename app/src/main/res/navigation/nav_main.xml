@@ -9,7 +9,35 @@
         android:id="@+id/mainTabFragment"
         android:name="lsvapp.kitsu.presentation.maintab.MainTabFragment"
         android:label="MainTabFragment"
-        tools:layout="@layout/fragment_main_tab"
-        />
+        tools:layout="@layout/fragment_main_tab" />
+
+    <action
+        android:id="@+id/global_action_to_profile_details"
+        app:destination="@+id/profileDetails" />
+
+    <fragment
+        android:id="@+id/profileDetails"
+        android:name="lsvapp.kitsu.presentation.profile.details.ProfileDetailsFragment"
+        android:label="ProfileDetailsFragment"
+        tools:layout="@layout/fragment_profile_details">
+        <argument
+            android:name="profileId"
+            app:argType="long" />
+    </fragment>
+
+    <action
+        android:id="@+id/global_action_to_post_details"
+        app:destination="@id/postDetails">
+    </action>
+
+    <fragment
+        android:id="@+id/postDetails"
+        android:name="lsvapp.kitsu.presentation.feed.postdetails.PostDetailsFragment"
+        android:label="PostDetails">
+        <argument
+            android:name="postId"
+            app:argType="long" />
+    </fragment>
+
 
 </navigation>
