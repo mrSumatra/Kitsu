@@ -4,21 +4,25 @@
     <item
         android:id="@+id/tab_feed"
         android:title="@string/bottom_nav_title_feed"
+        android:icon="@drawable/ic_feed"
         />
 
     <item
         android:id="@+id/tab_movie"
         android:title="@string/bottom_nav_title_movie"
+        android:icon="@drawable/ic_movie"
         />
 
     <item
         android:id="@+id/tab_group"
         android:title="@string/bottom_nav_title_group"
+        android:icon="@drawable/ic_group"
         />
 
     <item
         android:id="@+id/tab_profile"
         android:title="@string/bottom_nav_title_profile"
+        android:icon="@drawable/ic_profile"
         />
 
 </menu>

@@ -12,8 +12,11 @@ import lsvapp.kitsu.domain.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.domain.interactor.PostInteractor
 import lsvapp.kitsu.domain.interactor.UserInteractor
-import lsvapp.kitsu.presentation.feed.FeedViewModel
+import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
+import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
 import lsvapp.kitsu.presentation.movie.MovieTabViewModel
+import lsvapp.kitsu.presentation.profile.details.ProfileDetailsViewModel
+import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -77,10 +80,13 @@ private val interactorModule = module {
 }
 
 private val viewModelModules = module {
-    viewModel { FeedViewModel(get(), get()) }
+    viewModel { FeedViewTabModel(get(), get()) }
     viewModel { MovieTabViewModel(get()) }
+    viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get(), get()) }
+    viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
 }
 
 private val utils = module {
+    single { MainRouter() }
     factory { DtoConverter() }
 }

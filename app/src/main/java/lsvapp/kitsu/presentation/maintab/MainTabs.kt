@@ -2,6 +2,7 @@ package lsvapp.kitsu.presentation.maintab
 
 import androidx.fragment.app.Fragment
 import lsvapp.kitsu.R
+import lsvapp.kitsu.presentation.feed.tab.FeedTabFragment
 
 enum class MainTabs(
     val tag: TabTag,
@@ -11,7 +12,7 @@ enum class MainTabs(
     FEED(
         tag = TabTag.FEED,
         menuId = R.id.tab_feed,
-        newInstanceAction = { lsvapp.kitsu.presentation.feed.FeedTabFragment() }
+        newInstanceAction = { FeedTabFragment() }
     ),
     MOVIE(
         tag = TabTag.MOVIE,
