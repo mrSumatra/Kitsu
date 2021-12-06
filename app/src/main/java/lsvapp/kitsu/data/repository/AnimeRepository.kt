@@ -1,6 +1,6 @@
 package lsvapp.kitsu.data.repository
 
-import lsvapp.kitsu.data.network.kitsuAPI.AnimeApi
+import lsvapp.kitsu.data.api.AnimeApi
 
 class AnimeRepository(
     private val animeApi: AnimeApi

@@ -2,9 +2,9 @@ package lsvapp.kitsu.application.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import lsvapp.kitsu.data.network.kitsuAPI.AnimeApi
-import lsvapp.kitsu.data.network.kitsuAPI.PostApi
-import lsvapp.kitsu.data.network.kitsuAPI.UserApi
+import lsvapp.kitsu.data.api.AnimeApi
+import lsvapp.kitsu.data.api.PostApi
+import lsvapp.kitsu.data.api.UserApi
 import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.data.repository.PostRepository
 import lsvapp.kitsu.data.repository.UserRepository
