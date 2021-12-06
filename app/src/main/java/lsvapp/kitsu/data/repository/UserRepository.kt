@@ -1,6 +1,6 @@
 package lsvapp.kitsu.data.repository
 
-import lsvapp.kitsu.data.network.kitsuAPI.UserApi
+import lsvapp.kitsu.data.api.UserApi
 
 class UserRepository(
     private val userApi: UserApi

@@ -1,7 +1,7 @@
 package lsvapp.kitsu.data.repository
 
 import com.dropbox.android.external.store4.*
-import lsvapp.kitsu.data.network.kitsuAPI.PostApi
+import lsvapp.kitsu.data.api.PostApi
 import lsvapp.kitsu.domain.entity.PageContent
 import lsvapp.kitsu.domain.entity.dto.PostDto
 

@@ -1,4 +1,4 @@
-package lsvapp.kitsu.data.network.kitsuAPI
+package lsvapp.kitsu.data.api
 
 import lsvapp.kitsu.domain.entity.Data
 import lsvapp.kitsu.domain.entity.PageContent
