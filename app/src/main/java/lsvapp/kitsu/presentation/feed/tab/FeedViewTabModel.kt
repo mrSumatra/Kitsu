@@ -25,7 +25,7 @@ class FeedViewTabModel(
         _state.value = FeedTabState.Loading
         viewModelScope.launch {
             val postsDto = postInteractor.getPosts()
-            val posts = postsDto.data.map { post->
+            val posts = postsDto.data.map { post ->
                 val userDto = async { postInteractor.getAuthorPostUser(post.id) }
                 val author = dtoConverter.dataToUser(userDto.await().data)
                 dtoConverter.dataToPost(data = post, author = author)

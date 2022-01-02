@@ -17,7 +17,6 @@ import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
 import lsvapp.kitsu.presentation.movie.MovieTabViewModel
 import lsvapp.kitsu.presentation.profile.details.ProfileDetailsViewModel
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
-import lsvapp.kitsu.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -52,7 +51,7 @@ private val networkModule = module {
             .addInterceptor(get<HttpLoggingInterceptor>())
             .build()
     }
-
+    val BASE_URL = "https://kitsu.io/api/edge/"
     factory<Retrofit> {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

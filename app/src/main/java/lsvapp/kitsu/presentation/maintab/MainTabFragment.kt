@@ -12,7 +12,9 @@ import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
     private val binding: FragmentMainTabBinding by viewBinding()
 
-    private val currentFragment get() = childFragmentManager.fragments.firstOrNull { !it.isHidden }
+    private val currentFragment
+        get() = childFragmentManager.fragments.firstOrNull { !it.isHidden }
+
     private var currentTab: MainTabs? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
