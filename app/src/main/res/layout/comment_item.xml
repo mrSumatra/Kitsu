@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/spacing_small"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/author_avatar"
+        android:layout_width="@dimen/spacing_xxlarge"
+        android:layout_height="@dimen/spacing_xxlarge"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/author_avatar"
+        app:layout_constraintTop_toTopOf="@+id/author_avatar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/comment_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/spacing_normal"
+                android:textColor="@color/gray200"
+                tools:text="@tools:sample/lorem" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@tools:sample/lorem" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:drawableStart="@drawable/ic_like"
+        android:drawablePadding="@dimen/spacing_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="10">
+    </TextView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/like">
+    </View>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

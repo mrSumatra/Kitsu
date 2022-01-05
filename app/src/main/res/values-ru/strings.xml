@@ -7,5 +7,6 @@
     <string name="bottom_nav_title_group">Группы</string>
     <string name="bottom_nav_title_profile">Профиль</string>
 
+    <string name="comment_hint">Введите сообщение</string>
 
 </resources>
