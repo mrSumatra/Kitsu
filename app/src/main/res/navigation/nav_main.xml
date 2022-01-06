@@ -27,16 +27,15 @@
 
     <action
         android:id="@+id/global_action_to_post_details"
-        app:destination="@id/postDetails">
-    </action>
+        app:destination="@id/postDetails"></action>
 
     <fragment
         android:id="@+id/postDetails"
         android:name="lsvapp.kitsu.presentation.feed.postdetails.PostDetailsFragment"
         android:label="PostDetails">
         <argument
-            android:name="postId"
-            app:argType="long" />
+            android:name="post"
+            app:argType="lsvapp.kitsu.domain.entity.Post" />
     </fragment>
 
 

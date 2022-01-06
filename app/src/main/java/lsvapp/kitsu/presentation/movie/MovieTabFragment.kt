@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabMovieBinding
-import lsvapp.kitsu.domain.entity.Anime
+import lsvapp.kitsu.domain.entity.dto.AnimeDto
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,7 +30,7 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }
     }
 
-    private fun initContent(anime: List<Anime>) {
+    private fun initContent(anime: List<AnimeDto>) {
 
     }
 }

@@ -1,11 +1,12 @@
-package lsvapp.kitsu.domain.entity
+package lsvapp.kitsu.domain.entity.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import lsvapp.kitsu.domain.entity.Image
 import lsvapp.kitsu.domain.entity.enums.AgeRating
 
 @JsonClass(generateAdapter = true)
-data class Anime(
+data class AnimeDto(
 
     @Json(name = "canonicalTitle")
     val canonicalTitle: String,

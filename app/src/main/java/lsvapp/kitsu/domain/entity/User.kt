@@ -1,5 +1,9 @@
 package lsvapp.kitsu.domain.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
 
     /**
@@ -31,4 +35,4 @@ data class User(
      * Дата рождения
      */
     val birthday: String?
-)
+) : Parcelable

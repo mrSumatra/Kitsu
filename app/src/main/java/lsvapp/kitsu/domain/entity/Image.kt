@@ -1,8 +1,11 @@
 package lsvapp.kitsu.domain.entity
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Image(
 
@@ -19,8 +22,9 @@ data class Image(
     val large: String,
 
     @Json(name = "original")
-    val original: String,
-)
+    val original: String
+
+) : Parcelable
 
 
 

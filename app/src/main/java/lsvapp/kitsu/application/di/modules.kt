@@ -25,7 +25,9 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 val dataModules
     get() = networkModule + repositoryModule + interactorModule + viewModelModules + utils
 
@@ -78,6 +80,7 @@ private val interactorModule = module {
     single { UserInteractor(get()) }
 }
 
+@ExperimentalTime
 private val viewModelModules = module {
     viewModel { FeedViewTabModel(get(), get()) }
     viewModel { MovieTabViewModel(get()) }

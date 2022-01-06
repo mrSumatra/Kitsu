@@ -16,10 +16,12 @@ import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
+import kotlin.time.ExperimentalTime
+@ExperimentalTime
 class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
 
     private val binding: FragmentTabFeedBinding by viewBinding()
+
     private val viewTabModel: FeedViewTabModel by viewModel()
     private val mainRouter: MainRouter by inject()
 
@@ -44,7 +46,7 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
             PostAdapterItem(
                 post = it,
                 openProfile = { openProfile(it.author.id) },
-                openPost = { openPostDetails(it.id) }
+                openPost = { openPostDetails(it) }
             )
         }
         binding.content.adapter = adapter
@@ -57,9 +59,9 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
         mainRouter.onCommand(navCommand)
     }
 
-    private fun openPostDetails(postId: Long) {
+    private fun openPostDetails(post: Post) {
         val navCommand =
-            NavCommand.To(MainTabFragmentDirections.globalActionToPostDetails(postId))
+            NavCommand.To(MainTabFragmentDirections.globalActionToPostDetails(post))
         mainRouter.onCommand(navCommand)
     }
 }

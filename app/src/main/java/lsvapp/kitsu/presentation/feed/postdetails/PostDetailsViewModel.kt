@@ -19,18 +19,20 @@ class PostDetailsViewModel(
     val state: LiveData<PostDetailsState> = _state
 
     init {
-        initState()
+        initComments()
     }
 
-    private fun initState() {
+    private fun initComments() {
         _state.value = PostDetailsState.Loading
         viewModelScope.launch {
             try {
-                val postsDto = postInteractor.getPostsById(id)
-                val authorDto = postInteractor.getAuthorPostUser(id)
-                val author = dtoConverter.dataToUser(data = authorDto.data)
-                val post = dtoConverter.dataToPost(data = postsDto.data, author = author)
-                _state.value = PostDetailsState.Content(post = post)
+                val commentsDto = postInteractor.getComments(id)
+                val comments = commentsDto.data.map { commentsDto ->
+                    val userDto = async { postInteractor.getAuthorComment(commentsDto.id) }
+                    val author = dtoConverter.dataToUser(userDto.await().data)
+                    dtoConverter.daraToComment(data = commentsDto, author = author)
+                }
+                _state.value = PostDetailsState.Content(comments = comments)
             } catch (e: Exception) {
                 _state.value = PostDetailsState.Error(message = e.message)
             }

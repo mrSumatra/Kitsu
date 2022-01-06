@@ -1,7 +1,7 @@
 package lsvapp.kitsu.domain
 
 import lsvapp.kitsu.domain.entity.Comment
-import lsvapp.kitsu.domain.entity.Data
+import lsvapp.kitsu.domain.entity.dto.Data
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.domain.entity.dto.CommentDto
