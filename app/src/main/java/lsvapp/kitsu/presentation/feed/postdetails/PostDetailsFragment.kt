@@ -83,6 +83,7 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
             placeholder(R.drawable.ic_profile)
         }
         binding.authorName.text = post.author.name
+        binding.postCreate.text = post.createdAt
     }
 
     private fun initContent(post: Post) {

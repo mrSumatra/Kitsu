@@ -7,6 +7,7 @@ import lsvapp.kitsu.domain.entity.dto.CommentDto
 import lsvapp.kitsu.domain.entity.dto.Data
 import lsvapp.kitsu.domain.entity.dto.PostDto
 import lsvapp.kitsu.domain.entity.dto.UserDto
+import lsvapp.kitsu.presentation.utils.toHumanDataTime
 
 class DtoConverter {
 
@@ -21,7 +22,7 @@ class DtoConverter {
 
     fun dataToPost(data: Data<PostDto>, author: User) = Post(
         id = data.id,
-        createdAt = data.attributes.createdAt,
+        createdAt = data.attributes.createdAt.toHumanDataTime(),
         content = data.attributes.content,
         commentsCount = data.attributes.commentsCount,
         postLikesCount = data.attributes.postLikesCount,
@@ -30,7 +31,7 @@ class DtoConverter {
 
     fun daraToComment(data: Data<CommentDto>, author: User) = Comment(
         id = data.id,
-        createdAt = data.attributes.createdAt,
+        createdAt = data.attributes.createdAt.toHumanDataTime(),
         content = data.attributes.content,
         likesCount = data.attributes.likesCount,
         author = author

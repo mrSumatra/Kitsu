@@ -24,7 +24,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_normal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/author_avatar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="@dimen/text_headline6"
+            android:textColor="@color/white"
             tools:text="@tools:sample/lorem" />
 
         <TextView

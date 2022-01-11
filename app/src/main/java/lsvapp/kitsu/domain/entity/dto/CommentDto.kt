@@ -2,6 +2,7 @@ package lsvapp.kitsu.domain.entity.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.time.Instant
 
 @JsonClass(generateAdapter = true)
 data class CommentDto(

@@ -5,6 +5,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.CommentItemBinding
+import lsvapp.kitsu.presentation.utils.toHumanDataTime
 
 class CommentViewHolder(
     private val binding: CommentItemBinding

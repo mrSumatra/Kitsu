@@ -41,6 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="@dimen/text_headline6"
+                android:textColor="@color/white"
                 tools:text="@tools:sample/lorem" />
 
             <TextView
@@ -73,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:textAlignment="viewStart"
+                android:autoLink="web"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/author_avatar"
