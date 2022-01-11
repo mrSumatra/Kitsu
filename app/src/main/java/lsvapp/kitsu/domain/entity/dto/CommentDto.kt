@@ -6,10 +6,13 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CommentDto(
 
+    @Json(name = "createdAt")
+    val createdAt: String,
 
     @Json(name = "content")
     val content: String,
-    @Json(name = "likesCount")
-    val likesCount: Int,
 
-    )
+    @Json(name = "likesCount")
+    val likesCount: Int
+
+)

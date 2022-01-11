@@ -30,6 +30,7 @@ class DtoConverter {
 
     fun daraToComment(data: Data<CommentDto>, author: User) = Comment(
         id = data.id,
+        createdAt = data.attributes.createdAt,
         content = data.attributes.content,
         likesCount = data.attributes.likesCount,
         author = author

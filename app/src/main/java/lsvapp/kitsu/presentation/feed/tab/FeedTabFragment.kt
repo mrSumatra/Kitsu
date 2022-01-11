@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.flow.collectLatest
@@ -14,6 +15,7 @@ import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabFeedBinding
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.presentation.feed.tab.adapter.PostAdapter
+import lsvapp.kitsu.presentation.feed.tab.adapter.PostAdapterItem
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
@@ -38,13 +40,6 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
         super.onViewCreated(view, savedInstanceState)
 
         initContent()
-
-        viewModel.openEvent.observe(viewLifecycleOwner) { openEvent ->
-            when (openEvent) {
-                is OpenEvent.OpenDetails -> openPostDetails(openEvent.post)
-                is OpenEvent.OpenProfile -> openProfile(openEvent.id)
-            }
-        }
     }
 
     private fun initContent() {
@@ -52,8 +47,10 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
         binding.content.adapter = adapter
 
         lifecycleScope.launchWhenResumed {
-            viewModel.postPagerFlow.collectLatest {
-                adapter.submitData(it)
+            viewModel.postPagerFlow.collectLatest { post ->
+                adapter.submitData(post.map {
+                    it.toPostAdapterItem() }
+                )
             }
         }
 
@@ -73,4 +70,10 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
         val navCommand = NavCommand.To(MainTabFragmentDirections.globalActionToPostDetails(post))
         mainRouter.onCommand(navCommand)
     }
+
+    private fun Post.toPostAdapterItem() = PostAdapterItem(
+        post = this,
+        openProfile = { openProfile(this.author.id) },
+        openPost = { openPostDetails(this) }
+    )
 }

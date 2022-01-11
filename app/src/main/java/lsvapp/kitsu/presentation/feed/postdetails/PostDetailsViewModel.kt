@@ -1,17 +1,13 @@
 package lsvapp.kitsu.presentation.feed.postdetails
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import lsvapp.kitsu.domain.entity.Comment
 import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.PostInteractor
-import lsvapp.kitsu.presentation.feed.postdetails.adapter.CommentItem
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 
 class PostDetailsViewModel(
@@ -20,20 +16,13 @@ class PostDetailsViewModel(
     private val dtoConverter: DtoConverter
 ) : ViewModel() {
 
-    private val _postDetailsEvent = MutableLiveData<PostDetailsEvent>()
-    val postDetailsEvent: LiveData<PostDetailsEvent> = _postDetailsEvent
-
-    val commentPagerFlow: Flow<PagingData<CommentItem>> = Pager(
+    val commentPagerFlow: Flow<PagingData<Comment>> = Pager(
         config = PagingConfig(
             pageSize = FeedViewTabModel.PAGE_SIZE,
             initialLoadSize = FeedViewTabModel.PAGE_SIZE
         ),
         pagingSourceFactory = { pagingSource() }
-    ).flow.cachedIn(viewModelScope).map { pagingSource ->
-        pagingSource.map {
-            it.toAdapterItem()
-        }
-    }
+    ).flow.cachedIn(viewModelScope)
 
     private fun pagingSource() = object : PagingSource<Int, Comment>() {
         override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Comment> {
@@ -52,7 +41,7 @@ class PostDetailsViewModel(
                         ?: 0) + 1
                 )
             } catch (e: Exception) {
-                println("EBA ${e.message}")
+                println("Error = ${e.message}")
                 LoadResult.Error(e)
             }
         }
@@ -65,10 +54,7 @@ class PostDetailsViewModel(
         }
     }
 
-    fun Comment.toAdapterItem() = CommentItem(
-        comment = this,
-        openProfile = {
-            _postDetailsEvent.value = PostDetailsEvent.OpenProfile(profileId = this.author.id)
-        }
-    )
+    fun addComment() {
+
+    }
 }

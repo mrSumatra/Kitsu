@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -122,7 +122,9 @@
                 android:id="@+id/no_data_stub"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:title="@string/comment_no_data_title" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_comments"
@@ -137,7 +139,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view"
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/comment_item" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
@@ -196,10 +198,11 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/command_error"
         tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

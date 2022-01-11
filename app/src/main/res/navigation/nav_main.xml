@@ -9,7 +9,11 @@
         android:id="@+id/mainTabFragment"
         android:name="lsvapp.kitsu.presentation.maintab.MainTabFragment"
         android:label="MainTabFragment"
-        tools:layout="@layout/fragment_main_tab" />
+        tools:layout="@layout/fragment_main_tab">
+        <action
+            android:id="@+id/global_action_to_post_details"
+            app:destination="@id/postDetails" />
+    </fragment>
 
     <action
         android:id="@+id/global_action_to_profile_details"
@@ -24,10 +28,6 @@
             android:name="profileId"
             app:argType="long" />
     </fragment>
-
-    <action
-        android:id="@+id/global_action_to_post_details"
-        app:destination="@id/postDetails" />
 
     <fragment
         android:id="@+id/postDetails"

@@ -20,7 +20,8 @@ class CommentViewHolder(
         binding.authorName.text = item.comment.author.name
         binding.commentText.text = item.comment.content
         binding.like.text = item.comment.likesCount.toString()
-        binding.commentCreate.text = "to day"
+
+        binding.commentCreate.text = item.comment.createdAt
 
         binding.authorAvatar.setOnClickListener {
             item.openProfile.invoke()

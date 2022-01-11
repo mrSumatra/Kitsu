@@ -11,6 +11,7 @@
 
     <!--Post-->
     <string name="comment_hint">Введите сообщение</string>
+    <string name="comment_no_data_title">Нет комментариев</string>
 
     <!--Movie-->
     <string name="movie_anime_title">АНИМЕ</string>

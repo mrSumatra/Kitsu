@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:view_toolbar_title="@string/app_name" />
+        app:view_toolbar_title="@string/movie_anime_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"

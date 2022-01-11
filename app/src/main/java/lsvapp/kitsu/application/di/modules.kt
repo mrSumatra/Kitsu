@@ -8,6 +8,7 @@ import lsvapp.kitsu.data.api.UserApi
 import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.data.repository.PostRepository
 import lsvapp.kitsu.data.repository.UserRepository
+import lsvapp.kitsu.domain.entity.utils.DataTimeJsonAdapter
 import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.domain.interactor.PostInteractor
@@ -36,6 +37,7 @@ private val networkModule = module {
     factory<Moshi> {
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
+            .add(DataTimeJsonAdapter())
             .build()
     }
 

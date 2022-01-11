@@ -8,9 +8,7 @@ import kotlinx.android.synthetic.main.fragment_main_tab.*
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentMainTabBinding
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 class MainTabFragment : Fragment(R.layout.fragment_main_tab) {
     private val binding: FragmentMainTabBinding by viewBinding()
 

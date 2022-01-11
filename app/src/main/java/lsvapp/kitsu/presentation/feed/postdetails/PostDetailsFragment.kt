@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -15,10 +16,11 @@ import coil.transform.CircleCropTransformation
 import kotlinx.coroutines.flow.collectLatest
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentPostDetailsBinding
+import lsvapp.kitsu.domain.entity.Comment
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.presentation.feed.postdetails.adapter.CommentAdapter
+import lsvapp.kitsu.presentation.feed.postdetails.adapter.CommentItem
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
-import lsvapp.kitsu.presentation.utils.goBack
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
@@ -32,13 +34,15 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
     private val binding: FragmentPostDetailsBinding by viewBinding()
     private val viewModel: PostDetailsViewModel by viewModel { parametersOf(args.post.id) }
     private val mainRouter: MainRouter by inject()
+
     val adapter = CommentAdapter()
     private val loadStateListener: (CombinedLoadStates) -> Unit = { loadState ->
         binding.recyclerComments.isVisible = loadState.source.refresh is LoadState.NotLoading
         binding.loading.isVisible = loadState.source.refresh is LoadState.Loading
-//        binding.error.isVisible = loadState.source.refresh is LoadState.Error
-//        binding.stub.isVisible =
-//            loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+        binding.errorStub.isVisible = loadState.source.refresh is LoadState.Error
+
+        binding.noDataStub.isVisible =
+            loadState.source.refresh is LoadState.NotLoading && adapter.itemCount == 0
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,21 +52,20 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
         initContent(args.post)
         initPageContent()
 
-        viewModel.postDetailsEvent.observe(viewLifecycleOwner) { event ->
-            when (event) {
-                is PostDetailsEvent.OpenProfile -> openProfile(event.profileId)
-            }
+        binding.sendComment.setOnClickListener {
+            sendComment()
         }
     }
-
 
     private fun initPageContent() {
         binding.recyclerComments.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerComments.adapter = adapter
 
         lifecycleScope.launchWhenResumed {
-            viewModel.commentPagerFlow.collectLatest {
-                adapter.submitData(it)
+            viewModel.commentPagerFlow.collectLatest { comment ->
+                adapter.submitData(comment.map {
+                    it.toAdapterItem()
+                })
             }
         }
 
@@ -73,9 +76,6 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
     }
 
     private fun initToolbar(post: Post) {
-        binding.buttonBack.setOnClickListener {
-            goBack()
-        }
         binding.authorAvatar.load(post.author.avatar.original) {
             transformations(CircleCropTransformation())
             error(R.drawable.ic_profile)
@@ -96,4 +96,11 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
             NavCommand.To(MainTabFragmentDirections.globalActionToProfileDetails(profileId))
         mainRouter.onCommand(navCommand)
     }
+
+    private fun Comment.toAdapterItem() = CommentItem(
+        comment = this,
+        openProfile = { openProfile(profileId = this.author.id) }
+    )
+
+    private fun sendComment() {}
 }

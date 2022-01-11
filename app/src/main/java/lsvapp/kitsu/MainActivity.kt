@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         navController.setGraph(R.navigation.nav_main)
     }
 
+    override fun onSupportNavigateUp() = navController.navigateUp()
+
     private fun initRouter() {
         lifecycleScope.launchWhenStarted {
             mainRouter.commands.collect {

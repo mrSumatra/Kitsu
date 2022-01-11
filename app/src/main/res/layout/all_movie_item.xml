@@ -24,7 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/white"
+            android:singleLine="false"
+            android:maxLines="2"
             android:textSize="@dimen/text_headline4"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@string/movie_all_movie_title" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

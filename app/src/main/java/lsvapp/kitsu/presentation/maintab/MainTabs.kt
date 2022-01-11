@@ -6,9 +6,7 @@ import lsvapp.kitsu.presentation.feed.tab.FeedTabFragment
 import lsvapp.kitsu.presentation.group.GroupTabFragment
 import lsvapp.kitsu.presentation.movie.movietab.MovieTabFragment
 import lsvapp.kitsu.presentation.profile.ProfileTabFragment
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 enum class MainTabs(
     val tag: TabTag,
     val menuId: Int? = null,

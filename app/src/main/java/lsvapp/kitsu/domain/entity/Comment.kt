@@ -12,6 +12,11 @@ data class Comment(
     val id: Long,
 
     /**
+     * Дата-время создания
+     */
+    val createdAt: String,
+
+    /**
      * Текст комментария
      */
     val content: String,
