@@ -8,13 +8,14 @@ import lsvapp.kitsu.data.api.UserApi
 import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.data.repository.PostRepository
 import lsvapp.kitsu.data.repository.UserRepository
-import lsvapp.kitsu.domain.DtoConverter
+import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.domain.interactor.PostInteractor
 import lsvapp.kitsu.domain.interactor.UserInteractor
-import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
-import lsvapp.kitsu.presentation.movie.MovieTabViewModel
+import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
+import lsvapp.kitsu.presentation.movie.anime.AnimeViewModel
+import lsvapp.kitsu.presentation.movie.movietab.MovieTabViewModel
 import lsvapp.kitsu.presentation.profile.details.ProfileDetailsViewModel
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import okhttp3.OkHttpClient
@@ -25,9 +26,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 val dataModules
     get() = networkModule + repositoryModule + interactorModule + viewModelModules + utils
 
@@ -80,12 +79,12 @@ private val interactorModule = module {
     single { UserInteractor(get()) }
 }
 
-@ExperimentalTime
 private val viewModelModules = module {
     viewModel { FeedViewTabModel(get(), get()) }
     viewModel { MovieTabViewModel(get()) }
     viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get(), get()) }
     viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
+    viewModel { AnimeViewModel(get()) }
 }
 
 private val utils = module {

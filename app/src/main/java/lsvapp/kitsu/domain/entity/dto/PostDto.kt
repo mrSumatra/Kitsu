@@ -6,6 +6,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PostDto(
 
+    @Json(name = "createdAt")
+    val createdAt: String,
+
     @Json(name = "content")
     val content: String,
 
@@ -13,6 +16,6 @@ data class PostDto(
     val commentsCount: Int,
 
     @Json(name = "postLikesCount")
-    val postLikesCount: Int,
+    val postLikesCount: Int
 
 )

@@ -27,7 +27,7 @@
 
     <action
         android:id="@+id/global_action_to_post_details"
-        app:destination="@id/postDetails"></action>
+        app:destination="@id/postDetails" />
 
     <fragment
         android:id="@+id/postDetails"
@@ -37,6 +37,32 @@
             android:name="post"
             app:argType="lsvapp.kitsu.domain.entity.Post" />
     </fragment>
+
+    <action
+        android:id="@+id/global_action_to_anime_fragment"
+        app:destination="@id/animeFragment">
+    </action>
+
+    <fragment
+        android:id="@+id/animeFragment"
+        android:name="lsvapp.kitsu.presentation.movie.anime.AnimeFragment"
+        android:label="AnimeFragment" />
+    <fragment
+        android:id="@+id/feedTabFragment"
+        android:name="lsvapp.kitsu.presentation.feed.tab.FeedTabFragment"
+        android:label="FeedTabFragment" />
+    <fragment
+        android:id="@+id/groupTabFragment"
+        android:name="lsvapp.kitsu.presentation.group.GroupTabFragment"
+        android:label="GroupTabFragment" />
+    <fragment
+        android:id="@+id/movieTabFragment"
+        android:name="lsvapp.kitsu.presentation.movie.movietab.MovieTabFragment"
+        android:label="MovieTabFragment" />
+    <fragment
+        android:id="@+id/profileTabFragment"
+        android:name="lsvapp.kitsu.presentation.profile.ProfileTabFragment"
+        android:label="ProfileTabFragment" />
 
 
 </navigation>

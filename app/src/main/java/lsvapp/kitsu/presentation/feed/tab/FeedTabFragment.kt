@@ -4,53 +4,63 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.flow.collectLatest
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabFeedBinding
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.presentation.feed.tab.adapter.PostAdapter
-import lsvapp.kitsu.presentation.feed.tab.adapter.PostAdapterItem
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.time.ExperimentalTime
-@ExperimentalTime
+
 class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
 
     private val binding: FragmentTabFeedBinding by viewBinding()
 
-    private val viewTabModel: FeedViewTabModel by viewModel()
+    private val viewModel: FeedViewTabModel by viewModel()
     private val mainRouter: MainRouter by inject()
+    private val adapter = PostAdapter()
+    private val loadStateListener: (CombinedLoadStates) -> Unit = { loadState ->
+        binding.content.isVisible = loadState.source.refresh is LoadState.NotLoading
+        binding.loading.isVisible = loadState.source.refresh is LoadState.Loading
+        binding.error.isVisible = loadState.source.refresh is LoadState.Error
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initState()
-    }
 
-    private fun initState() {
-        viewTabModel.state.observe(viewLifecycleOwner) { state ->
-            binding.loading.isVisible = state is FeedTabState.Loading
+        initContent()
 
-            if (state is FeedTabState.Content) {
-                initContent(state.post)
+        viewModel.openEvent.observe(viewLifecycleOwner) { openEvent ->
+            when (openEvent) {
+                is OpenEvent.OpenDetails -> openPostDetails(openEvent.post)
+                is OpenEvent.OpenProfile -> openProfile(openEvent.id)
             }
         }
     }
 
-    private fun initContent(post: List<Post>) {
-        val adapter = PostAdapter()
-        adapter.items = post.map {
-            PostAdapterItem(
-                post = it,
-                openProfile = { openProfile(it.author.id) },
-                openPost = { openPostDetails(it) }
-            )
-        }
-        binding.content.adapter = adapter
+    private fun initContent() {
         binding.content.layoutManager = LinearLayoutManager(requireContext())
+        binding.content.adapter = adapter
+
+        lifecycleScope.launchWhenResumed {
+            viewModel.postPagerFlow.collectLatest {
+                adapter.submitData(it)
+            }
+        }
+
+        adapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+        adapter.addLoadStateListener(loadStateListener)
     }
 
     private fun openProfile(profileId: Long) {
@@ -60,8 +70,7 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
     }
 
     private fun openPostDetails(post: Post) {
-        val navCommand =
-            NavCommand.To(MainTabFragmentDirections.globalActionToPostDetails(post))
+        val navCommand = NavCommand.To(MainTabFragmentDirections.globalActionToPostDetails(post))
         mainRouter.onCommand(navCommand)
     }
 }

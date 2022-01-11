@@ -7,6 +7,9 @@ import com.squareup.moshi.JsonClass
 data class PageList<T>(
 
     @Json(name = "data")
-    val data: List<Data<T>>
+    val data: List<Data<T>>,
+
+    @Json(name = "meta")
+    val meta: MetaDto
 
 )

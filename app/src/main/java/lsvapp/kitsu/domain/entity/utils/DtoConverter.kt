@@ -1,10 +1,10 @@
-package lsvapp.kitsu.domain
+package lsvapp.kitsu.domain.entity.utils
 
 import lsvapp.kitsu.domain.entity.Comment
-import lsvapp.kitsu.domain.entity.dto.Data
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.domain.entity.dto.CommentDto
+import lsvapp.kitsu.domain.entity.dto.Data
 import lsvapp.kitsu.domain.entity.dto.PostDto
 import lsvapp.kitsu.domain.entity.dto.UserDto
 
@@ -21,6 +21,7 @@ class DtoConverter {
 
     fun dataToPost(data: Data<PostDto>, author: User) = Post(
         id = data.id,
+        createdAt = data.attributes.createdAt,
         content = data.attributes.content,
         commentsCount = data.attributes.commentsCount,
         postLikesCount = data.attributes.postLikesCount,

@@ -1,10 +1,6 @@
 package lsvapp.kitsu.data.api
 
-import lsvapp.kitsu.domain.entity.dto.Page
-import lsvapp.kitsu.domain.entity.dto.PageList
-import lsvapp.kitsu.domain.entity.dto.CommentDto
-import lsvapp.kitsu.domain.entity.dto.PostDto
-import lsvapp.kitsu.domain.entity.dto.UserDto
+import lsvapp.kitsu.domain.entity.dto.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.movie
+package lsvapp.kitsu.presentation.movie.movietab
 
 import lsvapp.kitsu.domain.entity.dto.AnimeDto
 

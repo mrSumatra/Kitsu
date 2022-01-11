@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import lsvapp.kitsu.R
 import lsvapp.kitsu.presentation.feed.tab.FeedTabFragment
 import lsvapp.kitsu.presentation.group.GroupTabFragment
-import lsvapp.kitsu.presentation.movie.MovieTabFragment
+import lsvapp.kitsu.presentation.movie.movietab.MovieTabFragment
 import lsvapp.kitsu.presentation.profile.ProfileTabFragment
 import kotlin.time.ExperimentalTime
 

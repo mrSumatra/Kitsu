@@ -12,6 +12,11 @@ data class Post(
     val id: Long,
 
     /**
+     * Дата создания
+     */
+    val createdAt: String,
+
+    /**
      * Автор поста
      */
     val author: User,
