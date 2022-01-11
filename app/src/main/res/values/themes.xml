@@ -14,5 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Widget.Titan.Toolbar.Button" parent="Widget.AppCompat.Toolbar.Button.Navigation" />
+    <style name="Widget.Kitsu.Toolbar.Button" parent="Widget.AppCompat.Toolbar.Button.Navigation" />
+
+    <style name="Widget.Kitsu.Progress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">?colorPrimary</item>
+    </style>
+
 </resources>
