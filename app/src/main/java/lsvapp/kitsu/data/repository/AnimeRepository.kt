@@ -5,5 +5,5 @@ import lsvapp.kitsu.data.api.AnimeApi
 class AnimeRepository(
     private val animeApi: AnimeApi
 ) {
-    suspend fun getAnime() = animeApi.getAnime()
+    suspend fun getAnime(page: Int? = null, size: Int? = null) = animeApi.getAnime(page = page, size = size)
 }

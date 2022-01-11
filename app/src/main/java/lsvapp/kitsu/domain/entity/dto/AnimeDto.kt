@@ -9,38 +9,35 @@ import lsvapp.kitsu.domain.entity.enums.AgeRating
 data class AnimeDto(
 
     @Json(name = "canonicalTitle")
-    val canonicalTitle: String,
+    val canonicalTitle: String?,
 
     @Json(name = "description")
-    val description: String,
+    val description: String?,
 
     @Json(name = "youtubeVideoId")
-    val youtubeVideoId: String,
+    val youtubeVideoId: String?,
 
     @Json(name = "status")
-    val status: String,
+    val status: String?,
 
     @Json(name = "posterImage")
     val posterImage: Image,
 
-//    @Json(name = "coverImage")
-//    val coverImage: Image,
-
     @Json(name = "ageRating")
-    val ageRating: AgeRating,
+    val ageRating: AgeRating?,
 
     @Json(name = "averageRating")
     val averageRating: String,
 
+    @Json(name = "popularityRank")
+    val popularityRank: Int,
+
     @Json(name = "userCount")
-    val userCount: Int,
+    val userCount: Int?,
 
     @Json(name = "favoritesCount")
-    val favoritesCount: Int,
+    val favoritesCount: Int?,
 
     @Json(name = "episodeCount")
-    val episodeCount: Int,
-
-//    @Json(name = "nextRelease")
-//    val nextRelease: String,
+    val episodeCount: Int?
 )
