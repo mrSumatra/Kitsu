@@ -33,6 +33,7 @@
     <dimen name="text_small">10sp</dimen>
 
     <dimen name="stroke">1dp</dimen>
+    <dimen name="corner_image">4dp</dimen>
     <dimen name="line">0.7dp</dimen>
     <dimen name="stroke_large">2dp</dimen>
 

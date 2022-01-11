@@ -5,10 +5,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 
 class MovieTabViewModel(
-    private val animeInteractor: AnimeInteractor
+    private val animeInteractor: AnimeInteractor,
+    private val dtoConverter: DtoConverter
 ) : ViewModel() {
 
     private val _animeState = MutableStateFlow<MovieTabState>(MovieTabState.Loading)
@@ -22,7 +24,9 @@ class MovieTabViewModel(
         viewModelScope.launch {
             _animeState.value = try {
                 val pageContent = animeInteractor.getAnime(page = 0, size = PAGE_SIZE)
-                val anime = pageContent.data.map { it.attributes }
+                val anime = pageContent.data.map {
+                    dtoConverter.dataToAnime(it)
+                }
                 MovieTabState.Content(anime = anime)
             } catch (e: Exception) {
                 MovieTabState.Error(e.message)

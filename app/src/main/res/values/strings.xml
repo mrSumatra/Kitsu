@@ -2,6 +2,7 @@
     <string name="app_name">Kitsu</string>
 
     <string name="command_error">Error</string>
+    <string name="min_template">%s minutes</string>
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">feed</string>
@@ -18,6 +19,11 @@
     <string name="movie_manga_title">MANGA</string>
     <string name="movie_all_movie_title">View All</string>
     <string name="movie_anime_popular">high rating</string>
+
+    <!--AnimeDetails-->
+    <string name="anime_details_trailer">watch trailer</string>
+    <string name="anime_desc_title">Description</string>
+    <string name="anime_episode_title">Episode</string>
 
 
 </resources>

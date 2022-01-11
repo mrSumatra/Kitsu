@@ -1,15 +1,24 @@
 package lsvapp.kitsu.domain.entity.dto
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 import lsvapp.kitsu.domain.entity.Image
 import lsvapp.kitsu.domain.entity.enums.AgeRating
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class AnimeDto(
 
     @Json(name = "canonicalTitle")
-    val canonicalTitle: String?,
+    val canonicalTitle: String,
+
+    @Json(name = "startDate")
+    val startDate: String?,
+
+    @Json(name = "endDate")
+    val endDate: String?,
 
     @Json(name = "description")
     val description: String?,
@@ -22,6 +31,9 @@ data class AnimeDto(
 
     @Json(name = "posterImage")
     val posterImage: Image,
+
+    @Json(name = "coverImage")
+    val coverImage: Image?,
 
     @Json(name = "ageRating")
     val ageRating: AgeRating?,
@@ -39,5 +51,9 @@ data class AnimeDto(
     val favoritesCount: Int?,
 
     @Json(name = "episodeCount")
-    val episodeCount: Int?
-)
+    val episodeCount: Int?,
+
+    @Json(name = "episodeLength")
+    val episodeLength: Int?
+
+) : Parcelable

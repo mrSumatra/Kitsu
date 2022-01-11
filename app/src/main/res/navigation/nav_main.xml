@@ -40,12 +40,11 @@
 
     <action
         android:id="@+id/global_action_to_anime_fragment"
-        app:destination="@id/animeFragment">
-    </action>
+        app:destination="@id/animeFragment"></action>
 
     <fragment
         android:id="@+id/animeFragment"
-        android:name="lsvapp.kitsu.presentation.movie.anime.AnimeFragment"
+        android:name="lsvapp.kitsu.presentation.movie.animelist.AnimeListFragment"
         android:label="AnimeFragment" />
     <fragment
         android:id="@+id/feedTabFragment"
@@ -63,6 +62,19 @@
         android:id="@+id/profileTabFragment"
         android:name="lsvapp.kitsu.presentation.profile.ProfileTabFragment"
         android:label="ProfileTabFragment" />
+
+    <action
+        android:id="@+id/global_action_to_anime_details_fragment"
+        app:destination="@id/animeDetailsFragment" />
+
+    <fragment
+        android:id="@+id/animeDetailsFragment"
+        android:name="lsvapp.kitsu.presentation.movie.animeDetails.AnimeDetailsFragment"
+        android:label="AnimeDetailsFragment">
+        <argument
+            android:name="anime"
+            app:argType="lsvapp.kitsu.domain.entity.Anime" />
+    </fragment>
 
 
 </navigation>

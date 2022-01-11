@@ -10,19 +10,19 @@ import kotlinx.android.parcel.Parcelize
 data class Image(
 
     @Json(name = "tiny")
-    val tiny: String,
+    val tiny: String?,
 
     @Json(name = "small")
-    val small: String,
+    val small: String?,
 
     @Json(name = "medium")
-    val medium: String,
+    val medium: String?,
 
     @Json(name = "large")
-    val large: String,
+    val large: String?,
 
     @Json(name = "original")
-    val original: String
+    val original: String?
 
 ) : Parcelable
 

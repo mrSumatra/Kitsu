@@ -8,8 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabMovieBinding
-import lsvapp.kitsu.domain.entity.dto.AnimeDto
+import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
+import lsvapp.kitsu.presentation.movie.animelist.AnimeListFragmentDirections
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
@@ -44,13 +45,17 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }
     }
 
-    private fun initAnime(anime: List<AnimeDto>) {
-
+    private fun initAnime(anime: List<Anime>) {
         val items = anime.filter {
             it.averageRating.toDouble() > SORT_RATING
         }.map {
-            ContentViewerItem.Anime(anime = it) {
-                openDetails()
+            ContentViewerItem.Content(
+                title = it.canonicalTitle,
+                ageRating = it.ageRating.toString(),
+                rating = it.averageRating,
+                imageLink = it.posterImage.original
+            ) {
+                openDetails(it)
             }
         }.plus(
             ContentViewerItem.AllMovie(
@@ -65,8 +70,10 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         mainRouter.onCommand(navCommand)
     }
 
-    private fun openDetails() {
-
+    private fun openDetails(animeDto: Anime) {
+        val navCommand =
+            NavCommand.To(AnimeListFragmentDirections.globalActionToAnimeDetailsFragment(animeDto))
+        mainRouter.onCommand(navCommand)
     }
 
     companion object {

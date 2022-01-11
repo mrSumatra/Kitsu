@@ -42,6 +42,7 @@
                 android:backgroundTint="?colorPrimary"
                 android:padding="@dimen/spacing_small"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/image"
                 tools:text="8.1"></TextView>
@@ -56,6 +57,7 @@
                 android:backgroundTint="@color/black"
                 android:padding="@dimen/spacing_small"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/image"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="8.1"></TextView>

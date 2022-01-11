@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.movie.anime.adapter
+package lsvapp.kitsu.presentation.movie.animelist.adapter
 
 import android.util.TypedValue
 import androidx.recyclerview.widget.RecyclerView
@@ -6,12 +6,12 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import lsvapp.kitsu.databinding.AnimeItemBinding
 
-class AnimeViewHolder(
+class AnimeListViewHolder(
     private val binding: AnimeItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: AnimeAdapterItem) {
-        binding.image.load(item.anime.posterImage.medium) {
+    fun bind(itemList: AnimeListAdapterItem) {
+        binding.image.load(itemList.anime.posterImage.medium) {
             transformations(
                 RoundedCornersTransformation(
                     TypedValue.applyDimension(
@@ -22,12 +22,12 @@ class AnimeViewHolder(
                 )
             )
         }
-        binding.title.text = item.anime.canonicalTitle
-        binding.rating.text = item.anime.averageRating
-        binding.ageRating.text = item.anime.ageRating.toString()
+        binding.title.text = itemList.anime.canonicalTitle
+        binding.rating.text = itemList.anime.averageRating
+        binding.ageRating.text = itemList.anime.ageRating.toString()
 
         binding.root.setOnClickListener {
-            item.action.invoke()
+            itemList.action.invoke()
         }
     }
 }

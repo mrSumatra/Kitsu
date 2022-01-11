@@ -2,6 +2,7 @@ package lsvapp.kitsu.presentation.utils.widget.adapter
 
 import android.util.TypedValue
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -16,10 +17,10 @@ sealed class ContentViewerViewHolder<T : ContentViewerItem>(
 
     class AnimeViewHolder(
         private val binding: MovieItemBinding
-    ) : ContentViewerViewHolder<ContentViewerItem.Anime>(binding.root) {
+    ) : ContentViewerViewHolder<ContentViewerItem.Content>(binding.root) {
 
-        override fun bind(item: ContentViewerItem.Anime) {
-            binding.image.load(item.anime.posterImage.medium) {
+        override fun bind(item: ContentViewerItem.Content) {
+            binding.image.load(item.imageLink) {
                 transformations(
                     RoundedCornersTransformation(
                         TypedValue.applyDimension(
@@ -30,22 +31,28 @@ sealed class ContentViewerViewHolder<T : ContentViewerItem>(
                     )
                 )
             }
-            binding.title.text = item.anime.canonicalTitle
-            binding.rating.text = item.anime.averageRating
-            binding.ageRating.text = item.anime.ageRating.toString()
-
+            binding.title.text = item.title
+            item.rating?.let {
+                binding.rating.apply {
+                    isVisible = true
+                    text = it
+                }
+            }
+            item.ageRating?.let {
+                binding.ageRating.apply {
+                    isVisible = true
+                    text = it
+                }
+            }
+            item.desc?.let {
+                binding.desc.apply {
+                    isVisible = true
+                    text = it
+                }
+            }
             binding.root.setOnClickListener {
                 item.action.invoke()
             }
-        }
-    }
-
-    class MangaViewHolder(
-        private val binding: MovieItemBinding
-    ) : ContentViewerViewHolder<ContentViewerItem.Manga>(binding.root) {
-
-        override fun bind(item: ContentViewerItem.Manga) {
-            TODO("Not yet implemented")
         }
     }
 
@@ -61,5 +68,4 @@ sealed class ContentViewerViewHolder<T : ContentViewerItem>(
             }
         }
     }
-
 }

@@ -7,4 +7,7 @@ class AnimeInteractor(
 ) {
     suspend fun getAnime(page: Int? = null, size: Int? = null) =
         repository.getAnime(page = page, size = size)
+
+    suspend fun getAnimeEpisodes(id: Long) =
+        repository.getAnimeEpisodes(id = id)
 }

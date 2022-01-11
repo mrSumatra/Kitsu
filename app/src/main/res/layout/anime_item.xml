@@ -43,7 +43,8 @@
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/image"
-                tools:text="8.1"></TextView>
+                tools:text="8.1">
+            </TextView>
 
             <TextView
                 android:id="@+id/age_rating"

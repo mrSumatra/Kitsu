@@ -1,12 +1,10 @@
 package lsvapp.kitsu.domain.entity.utils
 
+import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.Comment
 import lsvapp.kitsu.domain.entity.Post
 import lsvapp.kitsu.domain.entity.User
-import lsvapp.kitsu.domain.entity.dto.CommentDto
-import lsvapp.kitsu.domain.entity.dto.Data
-import lsvapp.kitsu.domain.entity.dto.PostDto
-import lsvapp.kitsu.domain.entity.dto.UserDto
+import lsvapp.kitsu.domain.entity.dto.*
 import lsvapp.kitsu.presentation.utils.toHumanDataTime
 
 class DtoConverter {
@@ -35,5 +33,24 @@ class DtoConverter {
         content = data.attributes.content,
         likesCount = data.attributes.likesCount,
         author = author
+    )
+
+    fun dataToAnime(data: Data<AnimeDto>) = Anime(
+        id = data.id,
+        canonicalTitle = data.attributes.canonicalTitle,
+        startDate = data.attributes.startDate,
+        endDate = data.attributes.endDate,
+        description = data.attributes.description,
+        youtubeVideoId = data.attributes.youtubeVideoId,
+        status = data.attributes.status,
+        posterImage = data.attributes.posterImage,
+        coverImage = data.attributes.coverImage,
+        ageRating = data.attributes.ageRating,
+        averageRating = data.attributes.averageRating,
+        popularityRank = data.attributes.popularityRank,
+        userCount = data.attributes.userCount,
+        favoritesCount = data.attributes.favoritesCount,
+        episodeCount = data.attributes.episodeCount,
+        episodeLength = data.attributes.episodeLength
     )
 }
