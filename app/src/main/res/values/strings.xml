@@ -1,13 +1,22 @@
 <resources>
     <string name="app_name">Kitsu</string>
 
-<!--    Bottom nav title-->
+    <string name="command_error">Error</string>
+
+    <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">feed</string>
     <string name="bottom_nav_title_movie">movie</string>
     <string name="bottom_nav_title_group">group</string>
     <string name="bottom_nav_title_profile">profile</string>
 
+    <!--Post-->
     <string name="comment_hint">Enter text</string>
+
+    <!--Movie-->
+    <string name="movie_anime_title">ANIME</string>
+    <string name="movie_manga_title">MANGA</string>
+    <string name="movie_all_movie_title">View All</string>
+    <string name="movie_anime_popular">high rating</string>
 
 
 </resources>

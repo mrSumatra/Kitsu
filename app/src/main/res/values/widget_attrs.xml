@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ContentViewer">
+        <attr name="content_view_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CenterToolbarView">
+        <attr name="view_toolbar_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="StubView">
+        <attr name="title" format="string" />
+        <attr name="desc" format="string" />
+    </declare-styleable>
+</resources>
