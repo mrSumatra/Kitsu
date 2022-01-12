@@ -32,4 +32,10 @@
     <string name="post_create_text_hilt">Введите текст</string>
 
 
+    <!--ProfileDetails-->
+    <string name="profile_details_like_title">лайки</string>
+    <string name="profile_details_followers_title">подписчики</string>
+    <string name="profile_details_following_title">подписки</string>
+
+
 </resources>

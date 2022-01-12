@@ -5,16 +5,18 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import coil.load
+import coil.transform.CircleCropTransformation
 import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
-import lsvapp.kitsu.databinding.FragmentProfileDetailsBinding
+import lsvapp.kitsu.databinding.FragmentProfileBinding
 import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CurrentProfileTabFragment : Fragment(R.layout.fragment_profile_details) {
+class CurrentProfileTabFragment : Fragment(R.layout.fragment_profile) {
 
-    private val binding: FragmentProfileDetailsBinding by viewBinding()
+    private val binding: FragmentProfileBinding by viewBinding()
     private val viewModel: CurrentProfileViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,7 +25,11 @@ class CurrentProfileTabFragment : Fragment(R.layout.fragment_profile_details) {
         lifecycleScope.launchWhenResumed {
             viewModel.state.collect {
                 binding.loading.isVisible = it is CurrentProfileState.Loading
-
+                binding.error.isVisible = it is CurrentProfileState.Error
+                binding.error.setStubView(
+                    title = getString(R.string.command_error),
+                    desc = (it as? CurrentProfileState.Error)?.message
+                )
                 if (it is CurrentProfileState.Content) {
                     initContent(it.user)
                 }
@@ -32,6 +38,21 @@ class CurrentProfileTabFragment : Fragment(R.layout.fragment_profile_details) {
     }
 
     private fun initContent(user: User) {
-        binding.textView3.text = user.name
+        binding.cover.load(user.coverImage?.original)
+        binding.avatar.load(user.avatar?.original) {
+            transformations(CircleCropTransformation())
+            error(R.drawable.ic_profile)
+            fallback(R.drawable.ic_profile)
+            placeholder(R.drawable.ic_profile)
+
+        }
+        binding.flexibleCollapsing.title = user.name
+        binding.titleLocation.text = user.location
+        binding.titleBirthDate.text = user.birthday
+        binding.titleGender.text = user.gender
+        binding.like.text = user.likesGivenCount
+        binding.followers.text = user.followersCount
+        binding.following.text = user.followingCount
+        binding.about.text = user.about
     }
 }

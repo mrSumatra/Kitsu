@@ -1,7 +1,6 @@
 package lsvapp.kitsu.presentation.movie.movietab
 
 import lsvapp.kitsu.domain.entity.Anime
-import lsvapp.kitsu.domain.entity.dto.AnimeDto
 
 sealed class MovieTabState {
 

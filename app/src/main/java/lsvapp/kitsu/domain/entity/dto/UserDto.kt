@@ -26,5 +26,14 @@ data class UserDto(
     val birthday: String?,
 
     @Json(name = "location")
-    val location: String?
+    val location: String?,
+
+    @Json(name = "followersCount")
+    val followersCount: String?,
+
+    @Json(name = "followingCount")
+    val followingCount: String?,
+
+    @Json(name = "likesGivenCount")
+    val likesGivenCount: String?
 )

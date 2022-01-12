@@ -46,7 +46,10 @@ class UserInteractor(
                 birthday = "24-04-1995",
                 gender = "MALE",
                 about = "text about me",
-                location = "Russia, Moskow"
+                location = "Russia, Moskow",
+                likesGivenCount = "532",
+                followingCount = "134",
+                followersCount = "1342"
             ),
             type = "User"
         )

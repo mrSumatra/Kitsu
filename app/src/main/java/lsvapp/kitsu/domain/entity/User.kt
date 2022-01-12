@@ -32,7 +32,34 @@ data class User(
     val avatar: Image?,
 
     /**
+     * Аватар
+     */
+    val coverImage: Image?,
+
+    /**
      * Дата рождения
      */
-    val birthday: String?
+    val birthday: String?,
+
+    /**
+     * Локация
+     */
+    val location: String?,
+
+    /**
+     * Подписчики
+     */
+    val followersCount: String?,
+
+    /**
+     * Подписки
+     */
+    val followingCount: String?,
+
+    /**
+     * Лайки
+     */
+    val likesGivenCount: String?
+
+
 ) : Parcelable

@@ -15,7 +15,12 @@ class DtoConverter {
         avatar = data.attributes.avatar,
         about = data.attributes.about,
         gender = data.attributes.gender,
-        birthday = data.attributes.birthday
+        birthday = data.attributes.birthday,
+        location = data.attributes.location,
+        coverImage = data.attributes.coverImage,
+        followersCount = data.attributes.followersCount,
+        followingCount = data.attributes.followingCount,
+        likesGivenCount = data.attributes.likesGivenCount
     )
 
     fun dataToPost(data: Data<PostDto>, author: User) = Post(

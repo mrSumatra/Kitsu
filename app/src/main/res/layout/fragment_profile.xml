@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="@style/Widget.Kitsu.Progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <lsvapp.kitsu.presentation.utils.widget.StubView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/command_error">
+
+    </lsvapp.kitsu.presentation.utils.widget.StubView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/annonce.main.coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/flexible.example.appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/flexible_collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:contentScrim="?colorPrimary"
+                app:expandedTitleMarginBottom="@dimen/spacing_title"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="Title">
+
+                <ImageView
+                    android:id="@+id/cover"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_eye"
+                    android:tint="@color/purple_alpha"
+                    tools:src="@tools:sample/avatars" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/flexible.example.toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@null"
+                    app:layout_collapseMode="pin" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:behavior_overlapTop="78dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/flexible.example.cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="@dimen/corners_radius_normal"
+                    app:cardElevation="@dimen/corners_radius_normal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_normal">
+
+                        <LinearLayout
+                            android:id="@+id/following_linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_normal"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/followers_linear"
+                            app:layout_constraintTop_toBottomOf="@+id/details_linear">
+
+                            <TextView
+                                android:id="@+id/following"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="viewStart"
+                                android:textColor="?colorPrimary"
+                                android:textSize="@dimen/text_headline3"
+                                android:textStyle="bold"
+                                tools:text="1234"></TextView>
+
+                            <TextView
+                                android:id="@+id/following_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/profile_details_following_title"
+                                android:textColor="@color/gray200"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/like_linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_normal"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/followers_linear"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/details_linear">
+
+                            <TextView
+                                android:id="@+id/like"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="viewStart"
+                                android:textColor="?colorPrimary"
+                                android:textSize="@dimen/text_headline3"
+                                android:textStyle="bold"
+                                tools:text="1234"></TextView>
+
+                            <TextView
+                                android:id="@+id/like_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/profile_details_like_title"
+                                android:textColor="@color/gray200"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/followers_linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_normal"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toStartOf="@+id/following_linear"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/like_linear"
+                            app:layout_constraintTop_toBottomOf="@+id/details_linear">
+
+                            <TextView
+                                android:id="@+id/followers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="viewStart"
+                                android:textColor="?colorPrimary"
+                                android:textSize="@dimen/text_headline3"
+                                android:textStyle="bold"
+                                tools:text="1234"></TextView>
+
+                            <TextView
+                                android:id="@+id/followers_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/profile_details_followers_title"
+                                android:textColor="@color/gray200"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/details_linear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/title_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_house"
+                                android:drawablePadding="@dimen/spacing_small"
+                                android:drawableTint="@color/white"
+                                android:textColor="@color/white"
+                                tools:text="Location" />
+
+                            <TextView
+                                android:id="@+id/title_birth_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_small"
+                                android:drawableStart="@drawable/ic_birth_date"
+                                android:drawablePadding="@dimen/spacing_small"
+                                android:drawableTint="@color/white"
+                                android:textColor="@color/white"
+                                tools:text="01-01-2000" />
+
+                            <TextView
+                                android:id="@+id/title_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_small"
+                                android:drawableStart="@drawable/ic_gender"
+                                android:drawablePadding="@dimen/spacing_small"
+                                android:drawableTint="@color/white"
+                                android:textColor="@color/white"
+                                tools:text="MALE" />
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:text="TextView" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/spacing_huge"
+            android:layout_height="@dimen/spacing_huge"
+            android:layout_marginRight="32dp"
+            android:scaleType="centerCrop"
+            app:layout_anchor="@id/flexible.example.cardview"
+            app:layout_anchorGravity="top|right|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.5"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
