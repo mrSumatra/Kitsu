@@ -12,6 +12,7 @@ import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.domain.interactor.PostInteractor
 import lsvapp.kitsu.domain.interactor.UserInteractor
+import lsvapp.kitsu.presentation.feed.postcreate.PostCreateViewModel
 import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 import lsvapp.kitsu.presentation.movie.animeDetails.AnimeDetailsViewModel
@@ -87,6 +88,7 @@ private val viewModelModules = module {
     viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
     viewModel { AnimeListViewModel(get(), get()) }
     viewModel { (animeId: Long) -> AnimeDetailsViewModel(animeId, get()) }
+    viewModel { PostCreateViewModel(get(), get()) }
 }
 
 private val utils = module {

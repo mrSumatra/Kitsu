@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface PostApi {
 
-    @GET("posts")
+    @GET("posts?sort=-createdAt")
     suspend fun getPosts(
         @Query("page[offset]") page: Int? = null,
         @Query("page[limit]") size: Int? = null,

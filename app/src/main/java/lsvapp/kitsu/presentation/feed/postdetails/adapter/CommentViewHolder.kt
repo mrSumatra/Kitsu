@@ -12,7 +12,7 @@ class CommentViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: CommentItem) {
-        binding.authorAvatar.load(item.comment.author.avatar.original) {
+        binding.authorAvatar.load(item.comment.author.avatar?.original) {
             transformations(CircleCropTransformation())
             error(R.drawable.ic_profile)
             fallback(R.drawable.ic_profile)

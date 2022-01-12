@@ -17,8 +17,14 @@ data class UserDto(
     val gender: String?,
 
     @Json(name = "avatar")
-    val avatar: Image,
+    val avatar: Image?,
+
+    @Json(name = "coverImage")
+    val coverImage: Image?,
 
     @Json(name = "birthday")
-    val birthday: String?
+    val birthday: String?,
+
+    @Json(name = "location")
+    val location: String?
 )

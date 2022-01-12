@@ -26,5 +26,11 @@
     <string name="anime_episode_title">Episode</string>
     <string name="anime_episode_total_template">total %d</string>
 
+    <!--PostCreate-->
+    <string name="post_create_title">Create post</string>
+    <string name="post_create_text_hilt">Enter post text</string>
+
+
+
 
 </resources>

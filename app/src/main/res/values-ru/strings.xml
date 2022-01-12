@@ -27,5 +27,9 @@
     <string name="anime_episode_title">Серии</string>
     <string name="anime_episode_total_template">всего %d</string>
 
+    <!--PostCreate-->
+    <string name="post_create_title">Создание поста</string>
+    <string name="post_create_text_hilt">Введите текст</string>
+
 
 </resources>

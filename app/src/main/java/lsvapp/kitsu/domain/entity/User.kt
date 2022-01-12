@@ -29,7 +29,7 @@ data class User(
     /**
      * Аватар
      */
-    val avatar: Image,
+    val avatar: Image?,
 
     /**
      * Дата рождения

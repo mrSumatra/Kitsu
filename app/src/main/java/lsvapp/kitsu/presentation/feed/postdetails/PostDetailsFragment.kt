@@ -76,7 +76,7 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
     }
 
     private fun initToolbar(post: Post) {
-        binding.authorAvatar.load(post.author.avatar.original) {
+        binding.authorAvatar.load(post.author.avatar?.original) {
             transformations(CircleCropTransformation())
             error(R.drawable.ic_profile)
             fallback(R.drawable.ic_profile)

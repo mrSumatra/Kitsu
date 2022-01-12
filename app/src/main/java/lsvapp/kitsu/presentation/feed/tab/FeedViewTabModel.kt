@@ -40,6 +40,7 @@ class FeedViewTabModel(
                     nextKey = if (posts.size < PAGE_SIZE) null else (params.key ?: 0) + 1
                 )
             } catch (e: Exception) {
+                println("ERROR = ${e.message}")
                 LoadResult.Error(e)
             }
         }

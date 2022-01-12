@@ -39,7 +39,17 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initToolbar()
         initContent()
+    }
+
+    private fun initToolbar() {
+        binding.toolbar.editRightEndIcon {
+            setImageResource(R.drawable.ic_baseline_add_24)
+            setOnClickListener {
+                openCreatePost()
+            }
+        }
     }
 
     private fun initContent() {
@@ -49,7 +59,8 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
         lifecycleScope.launchWhenResumed {
             viewModel.postPagerFlow.collectLatest { post ->
                 adapter.submitData(post.map {
-                    it.toPostAdapterItem() }
+                    it.toPostAdapterItem()
+                }
                 )
             }
         }
@@ -58,6 +69,12 @@ class FeedTabFragment : Fragment(R.layout.fragment_tab_feed) {
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
         adapter.addLoadStateListener(loadStateListener)
+    }
+
+    private fun openCreatePost() {
+        mainRouter.onCommand(
+            NavCommand.To(MainTabFragmentDirections.globalActionToPostCreate())
+        )
     }
 
     private fun openProfile(profileId: Long) {

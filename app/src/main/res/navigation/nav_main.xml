@@ -13,6 +13,10 @@
         <action
             android:id="@+id/global_action_to_post_details"
             app:destination="@id/postDetails" />
+
+        <action
+            android:id="@+id/global_action_to_post_create"
+            app:destination="@id/postCreate" />
     </fragment>
 
     <action
@@ -49,7 +53,7 @@
     <fragment
         android:id="@+id/feedTabFragment"
         android:name="lsvapp.kitsu.presentation.feed.tab.FeedTabFragment"
-        android:label="FeedTabFragment" />
+        android:label="FeedTabFragment"></fragment>
     <fragment
         android:id="@+id/groupTabFragment"
         android:name="lsvapp.kitsu.presentation.group.GroupTabFragment"
@@ -75,6 +79,10 @@
             android:name="anime"
             app:argType="lsvapp.kitsu.domain.entity.Anime" />
     </fragment>
+    <fragment
+        android:id="@+id/postCreate"
+        android:name="lsvapp.kitsu.presentation.feed.postcreate.PostCreateFragment"
+        android:label="PostCreate" />
 
 
 </navigation>

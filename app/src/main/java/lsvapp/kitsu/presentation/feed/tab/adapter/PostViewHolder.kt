@@ -11,7 +11,7 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: PostAdapterItem) {
-        binding.authorAvatar.load(item.post.author.avatar.original) {
+        binding.authorAvatar.load(item.post.author.avatar?.original) {
             transformations(CircleCropTransformation())
             error(R.drawable.ic_profile)
             fallback(R.drawable.ic_profile)
