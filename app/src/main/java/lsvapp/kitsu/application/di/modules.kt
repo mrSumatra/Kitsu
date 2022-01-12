@@ -3,18 +3,22 @@ package lsvapp.kitsu.application.di
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import lsvapp.kitsu.data.api.AnimeApi
+import lsvapp.kitsu.data.api.GroupeApi
 import lsvapp.kitsu.data.api.PostApi
 import lsvapp.kitsu.data.api.UserApi
 import lsvapp.kitsu.data.repository.AnimeRepository
+import lsvapp.kitsu.data.repository.GroupeRepository
 import lsvapp.kitsu.data.repository.PostRepository
 import lsvapp.kitsu.data.repository.UserRepository
 import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
+import lsvapp.kitsu.domain.interactor.GroupeInteractor
 import lsvapp.kitsu.domain.interactor.PostInteractor
 import lsvapp.kitsu.domain.interactor.UserInteractor
 import lsvapp.kitsu.presentation.feed.postcreate.PostCreateViewModel
 import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
+import lsvapp.kitsu.presentation.group.GroupeTabViewModel
 import lsvapp.kitsu.presentation.movie.animeDetails.AnimeDetailsViewModel
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListViewModel
 import lsvapp.kitsu.presentation.movie.episcodeDetails.AnimeEpisodeViewModel
@@ -68,6 +72,7 @@ private val networkModule = module {
     single<AnimeApi> { get<Retrofit>().create() }
     single<PostApi> { get<Retrofit>().create() }
     single<UserApi> { get<Retrofit>().create() }
+    single<GroupeApi> { get<Retrofit>().create() }
 
 }
 
@@ -75,12 +80,14 @@ private val repositoryModule = module {
     single { AnimeRepository(get()) }
     single { PostRepository(get()) }
     single { UserRepository(get()) }
+    single { GroupeRepository(get()) }
 }
 
 private val interactorModule = module {
     single { AnimeInteractor(get(), get()) }
     single { PostInteractor(get()) }
     single { UserInteractor(get(), get()) }
+    single { GroupeInteractor(get(), get()) }
 }
 
 private val viewModelModules = module {
@@ -92,6 +99,7 @@ private val viewModelModules = module {
     viewModel { (animeId: Long) -> AnimeDetailsViewModel(animeId, get()) }
     viewModel { PostCreateViewModel(get()) }
     viewModel { CurrentProfileViewModel(get()) }
+    viewModel { GroupeTabViewModel(get()) }
     viewModel { (animeId: Long, episodeId: Long) ->
         AnimeEpisodeViewModel(
             animeId = animeId,

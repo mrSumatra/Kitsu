@@ -64,4 +64,13 @@ class DtoConverter {
         number = data.attributes.number,
         length = data.attributes.length
     )
+
+    fun dataToGroupe(data: Data<GroupeDto>) = Groupe(
+        id = data.id,
+        about = data.attributes.about,
+        locale = data.attributes.locale,
+        membersCount = data.attributes.membersCount,
+        name = data.attributes.name,
+        avatar = data.attributes.avatar
+    )
 }
