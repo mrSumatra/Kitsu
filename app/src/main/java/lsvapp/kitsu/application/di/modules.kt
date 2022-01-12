@@ -18,6 +18,7 @@ import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 import lsvapp.kitsu.presentation.movie.animeDetails.AnimeDetailsViewModel
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListViewModel
 import lsvapp.kitsu.presentation.movie.movietab.MovieTabViewModel
+import lsvapp.kitsu.presentation.profile.CurrentProfileViewModel
 import lsvapp.kitsu.presentation.profile.details.ProfileDetailsViewModel
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import okhttp3.OkHttpClient
@@ -89,6 +90,7 @@ private val viewModelModules = module {
     viewModel { AnimeListViewModel(get(), get()) }
     viewModel { (animeId: Long) -> AnimeDetailsViewModel(animeId, get()) }
     viewModel { PostCreateViewModel(get(), get()) }
+    viewModel { CurrentProfileViewModel(get(), get()) }
 }
 
 private val utils = module {

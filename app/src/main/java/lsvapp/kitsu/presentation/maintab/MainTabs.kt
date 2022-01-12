@@ -5,7 +5,7 @@ import lsvapp.kitsu.R
 import lsvapp.kitsu.presentation.feed.tab.FeedTabFragment
 import lsvapp.kitsu.presentation.group.GroupTabFragment
 import lsvapp.kitsu.presentation.movie.movietab.MovieTabFragment
-import lsvapp.kitsu.presentation.profile.ProfileTabFragment
+import lsvapp.kitsu.presentation.profile.CurrentProfileTabFragment
 
 enum class MainTabs(
     val tag: TabTag,
@@ -30,6 +30,6 @@ enum class MainTabs(
     PROFILE(
         tag = TabTag.PROFILE,
         menuId = R.id.tab_profile,
-        newInstanceAction = { ProfileTabFragment() }
+        newInstanceAction = { CurrentProfileTabFragment() }
     )
 }

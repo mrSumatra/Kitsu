@@ -64,7 +64,7 @@
         android:label="MovieTabFragment" />
     <fragment
         android:id="@+id/profileTabFragment"
-        android:name="lsvapp.kitsu.presentation.profile.ProfileTabFragment"
+        android:name="lsvapp.kitsu.presentation.profile.CurrentProfileTabFragment"
         android:label="ProfileTabFragment" />
 
     <action
