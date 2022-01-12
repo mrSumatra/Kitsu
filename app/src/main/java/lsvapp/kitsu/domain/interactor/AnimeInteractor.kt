@@ -2,6 +2,7 @@ package lsvapp.kitsu.domain.interactor
 
 import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.domain.entity.Anime
+import lsvapp.kitsu.domain.entity.AnimeEpisode
 import lsvapp.kitsu.domain.entity.utils.DtoConverter
 
 class AnimeInteractor(
@@ -15,6 +16,18 @@ class AnimeInteractor(
         }
     }
 
-    suspend fun getAnimeEpisodes(id: Long) =
-        repository.getAnimeEpisodes(id = id)
+    suspend fun getAnimeById(animeId: Long): Anime {
+        val animeDto = repository.getAnimeById(animeId)
+        return dtoConverter.dataToAnime(animeDto.data)
+    }
+
+    suspend fun getAnimeEpisodes(id: Long) = repository.getAnimeEpisodes(id = id).data.map {
+        dtoConverter.dataToAnimeEpisode(it)
+    }
+
+    suspend fun getAnimeEpisodesById(episodeId: Long): AnimeEpisode {
+        val episode = repository.getAnimeEpisodesById(id = episodeId).data
+        return dtoConverter.dataToAnimeEpisode(episode)
+    }
+
 }

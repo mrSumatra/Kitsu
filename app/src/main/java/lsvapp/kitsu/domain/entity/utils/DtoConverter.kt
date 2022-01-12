@@ -1,9 +1,6 @@
 package lsvapp.kitsu.domain.entity.utils
 
-import lsvapp.kitsu.domain.entity.Anime
-import lsvapp.kitsu.domain.entity.Comment
-import lsvapp.kitsu.domain.entity.Post
-import lsvapp.kitsu.domain.entity.User
+import lsvapp.kitsu.domain.entity.*
 import lsvapp.kitsu.domain.entity.dto.*
 import lsvapp.kitsu.presentation.utils.toHumanDataTime
 
@@ -57,5 +54,14 @@ class DtoConverter {
         favoritesCount = data.attributes.favoritesCount,
         episodeCount = data.attributes.episodeCount,
         episodeLength = data.attributes.episodeLength
+    )
+
+    fun dataToAnimeEpisode(data: Data<AnimeEpisodeDto>) = AnimeEpisode(
+        id = data.id,
+        canonicalTitle = data.attributes.canonicalTitle,
+        description = data.attributes.description,
+        seasonNumber = data.attributes.seasonNumber,
+        number = data.attributes.number,
+        length = data.attributes.length
     )
 }

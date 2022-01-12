@@ -32,7 +32,7 @@ class CenterToolbarView @JvmOverloads constructor(
         }
     }
 
-    private var title: CharSequence?
+    var title: CharSequence?
         get() = titleTextView.text
         set(value) {
             titleTextView.text = value

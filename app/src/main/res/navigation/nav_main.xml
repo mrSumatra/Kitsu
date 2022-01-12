@@ -84,5 +84,21 @@
         android:name="lsvapp.kitsu.presentation.feed.postcreate.PostCreateFragment"
         android:label="PostCreate" />
 
+    <action
+        android:id="@+id/global_action_to_anime_episode_details"
+        app:destination="@id/animeEpisodeDetailsFragment" />
+
+    <fragment
+        android:id="@+id/animeEpisodeDetailsFragment"
+        android:name="lsvapp.kitsu.presentation.movie.episcodeDetails.AnimeEpisodeDetailsFragment"
+        android:label="AnimeEpisodeDetailsFragment">
+        <argument
+            android:name="animeId"
+            app:argType="long" />
+        <argument
+            android:name="episodeId"
+            app:argType="long" />
+    </fragment>
+
 
 </navigation>

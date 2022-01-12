@@ -13,9 +13,12 @@ import coil.transform.RoundedCornersTransformation
 import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentAnimeDetailsBinding
-import lsvapp.kitsu.domain.entity.dto.AnimeEpisodeDto
+import lsvapp.kitsu.domain.entity.AnimeEpisode
+import lsvapp.kitsu.presentation.utils.navigation.MainRouter
+import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -24,6 +27,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     private val args: AnimeDetailsFragmentArgs by navArgs()
     private val binding: FragmentAnimeDetailsBinding by viewBinding()
     private val viewModel: AnimeDetailsViewModel by viewModel() { parametersOf(args.anime.id) }
+    private val mainRouter: MainRouter by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,7 +69,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         }
     }
 
-    private fun initEpisodeAdapter(episodes: List<AnimeEpisodeDto>) {
+    private fun initEpisodeAdapter(episodes: List<AnimeEpisode>) {
         binding.contentViewer.setTitle(
             getString(
                 R.string.anime_episode_total_template,
@@ -77,9 +81,19 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         )
     }
 
-    fun AnimeEpisodeDto.toContentItem(): ContentViewerItem.Content = ContentViewerItem.Content(
+    fun AnimeEpisode.toContentItem(): ContentViewerItem.Content = ContentViewerItem.Content(
         title = "${this.number} ${this.canonicalTitle}",
         imageLink = args.anime.posterImage.original,
         desc = getString(R.string.min_template, this.length)
-    ) {}
+    ) { openEpisodeDetails(episodeId = this.id, animeId = args.anime.id) }
+
+    private fun openEpisodeDetails(episodeId: Long, animeId: Long) {
+        val navCommand = NavCommand.To(
+            AnimeDetailsFragmentDirections.globalActionToAnimeEpisodeDetails(
+                episodeId = episodeId,
+                animeId = animeId
+            )
+        )
+        mainRouter.onCommand(navCommand)
+    }
 }

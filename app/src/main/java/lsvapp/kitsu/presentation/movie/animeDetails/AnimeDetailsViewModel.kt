@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import lsvapp.kitsu.domain.entity.dto.AnimeEpisodeDto
+import lsvapp.kitsu.domain.entity.AnimeEpisode
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 
 class AnimeDetailsViewModel(
@@ -23,12 +23,10 @@ class AnimeDetailsViewModel(
     fun initState() {
         viewModelScope.launch {
             _episodeState.value = try {
-                val episodes = animeInteractor.getAnimeEpisodes(
-                    id = animeId
-                ).data.map { it.attributes }
+                val episodes = animeInteractor.getAnimeEpisodes(id = animeId)
                 EpisodeState.Content(episodes)
             } catch (e: Exception) {
-                println("EBBB = ${e.message}")
+                println("ERROR = ${e.message}")
                 EpisodeState.Error(e.message)
             }
         }
@@ -42,6 +40,6 @@ class AnimeDetailsViewModel(
 
 sealed class EpisodeState {
     object Loading : EpisodeState()
-    data class Content(val episodes: List<AnimeEpisodeDto>) : EpisodeState()
+    data class Content(val episodes: List<AnimeEpisode>) : EpisodeState()
     data class Error(val message: String?) : EpisodeState()
 }
