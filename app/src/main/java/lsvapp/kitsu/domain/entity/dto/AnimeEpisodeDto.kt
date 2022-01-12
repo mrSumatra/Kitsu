@@ -7,18 +7,18 @@ import com.squareup.moshi.JsonClass
 data class AnimeEpisodeDto(
 
     @Json(name = "canonicalTitle")
-    val canonicalTitle: String,
+    val canonicalTitle: String?,
 
     @Json(name = "description")
-    val description: String,
+    val description: String?,
 
     @Json(name = "seasonNumber")
-    val seasonNumber: String,
+    val seasonNumber: String?,
 
     @Json(name = "number")
-    val number: String,
+    val number: String?,
 
     @Json(name = "length")
-    val length: String
+    val length: String?
 
 )

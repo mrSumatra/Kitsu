@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.domain.entity.dto.AnimeEpisodeDto
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 

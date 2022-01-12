@@ -19,5 +19,10 @@ interface AnimeApi {
     suspend fun getAnimeEpisodes(
         @Path("id") id: Long
     ): PageList<AnimeEpisodeDto>
+//
+//    @GET("anime/{id}/categories")
+//    suspend fun getAnimeCategories(
+//        @Path("id") id: Long
+//    ): PageList<AnimeEpisodeDto>
 
 }

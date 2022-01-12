@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.collectLatest
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentAnimeListBinding
 import lsvapp.kitsu.domain.entity.Anime
-import lsvapp.kitsu.domain.entity.dto.AnimeDto
 import lsvapp.kitsu.presentation.movie.animelist.adapter.AnimeListAdapter
 import lsvapp.kitsu.presentation.movie.animelist.adapter.AnimeListAdapterItem
 import lsvapp.kitsu.presentation.utils.goBack
