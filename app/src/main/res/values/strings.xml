@@ -2,7 +2,7 @@
     <string name="app_name">Kitsu</string>
 
     <string name="command_error">Error</string>
-    <string name="min_template">%s minutes</string>
+    <string name="min_template">%s min</string>
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">feed</string>
@@ -24,6 +24,7 @@
     <string name="anime_details_trailer">watch trailer</string>
     <string name="anime_desc_title">Description</string>
     <string name="anime_episode_title">Episode</string>
+    <string name="anime_episode_total_template">total %d</string>
 
 
 </resources>

@@ -59,12 +59,22 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
                 binding.episodeLoading.isVisible = state is EpisodeState.Loading
 
                 if (state is EpisodeState.Content) {
-                    binding.contentViewer.setContent(
-                        state.episodes.map { it.toContentItem() }
-                    )
+                    initEpisodeAdapter(state.episodes)
                 }
             }
         }
+    }
+
+    private fun initEpisodeAdapter(episodes: List<AnimeEpisodeDto>) {
+        binding.contentViewer.setTitle(
+            getString(
+                R.string.anime_episode_total_template,
+                args.anime.episodeCount
+            )
+        )
+        binding.contentViewer.setContent(
+            episodes.map { it.toContentItem() }
+        )
     }
 
     fun AnimeEpisodeDto.toContentItem(): ContentViewerItem.Content = ContentViewerItem.Content(

@@ -3,6 +3,7 @@ package lsvapp.kitsu.presentation.utils.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.use
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,5 +43,9 @@ class ContentViewer @JvmOverloads constructor(
 
     fun setContent(items: List<ContentViewerItem>) {
         contentViewerAdapter.items = items
+    }
+
+    fun setTitle(@StringRes title: String) {
+        titleTextView.text = title
     }
 }

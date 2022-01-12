@@ -2,7 +2,7 @@
     <string name="app_name">Kitsu</string>
 
     <string name="command_error">Ошибка</string>
-    <string name="min_template">%s минут</string>
+    <string name="min_template">%s мин</string>
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">Лента</string>
@@ -25,5 +25,7 @@
     <string name="anime_details_trailer">смотреть трейлер</string>
     <string name="anime_desc_title">Описание</string>
     <string name="anime_episode_title">Серии</string>
+    <string name="anime_episode_total_template">всего %d</string>
+
 
 </resources>

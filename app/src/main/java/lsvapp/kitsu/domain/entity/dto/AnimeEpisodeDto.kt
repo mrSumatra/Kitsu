@@ -14,6 +14,7 @@ data class AnimeEpisodeDto(
 
     @Json(name = "seasonNumber")
     val seasonNumber: String,
+
     @Json(name = "number")
     val number: String,
 
