@@ -10,8 +10,7 @@ import lsvapp.kitsu.domain.interactor.UserInteractor
 
 class ProfileDetailsViewModel(
     val id: Long,
-    private val userInteractor: UserInteractor,
-    private val dtoConverter: DtoConverter
+    private val userInteractor: UserInteractor
 ) : ViewModel() {
 
     private val _state = MutableLiveData<ProfileDetailsState>()
@@ -25,8 +24,8 @@ class ProfileDetailsViewModel(
         viewModelScope.launch {
             _state.value = ProfileDetailsState.Loading
             try {
-                val userDto = userInteractor.getUserById(id)
-                _state.value = ProfileDetailsState.Content(dtoConverter.dataToUser(userDto))
+                val user = userInteractor.getUserById(id)
+                _state.value = ProfileDetailsState.Content(user)
             } catch (e: Exception) {
                 _state.value = ProfileDetailsState.Error(e.message)
             }

@@ -5,11 +5,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.UserInteractor
 
 class CurrentProfileViewModel(
-    private val dtoConverter: DtoConverter,
     private val userInteractor: UserInteractor
 ) : ViewModel() {
 
@@ -23,8 +21,8 @@ class CurrentProfileViewModel(
     private fun initState() {
         viewModelScope.launch {
             _state.value = try {
-                val userDto = userInteractor.getCurrentUser()
-                CurrentProfileState.Content(dtoConverter.dataToUser(userDto))
+                val user = userInteractor.getCurrentUser()
+                CurrentProfileState.Content(user)
             } catch (e: Exception) {
                 CurrentProfileState.Error(e.message)
             }

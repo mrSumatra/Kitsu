@@ -5,7 +5,8 @@ import lsvapp.kitsu.data.repository.PostRepository
 class PostInteractor(
     private val postRepository: PostRepository
 ) {
-    suspend fun getPosts(page: Int? = null, size: Int? = null) = postRepository.getPosts(page = page, size = size)
+    suspend fun getPosts(page: Int? = null, size: Int? = null) =
+        postRepository.getPosts(page = page, size = size)
 
     suspend fun getPostsById(id: Long) = postRepository.getPostsById(id)
 

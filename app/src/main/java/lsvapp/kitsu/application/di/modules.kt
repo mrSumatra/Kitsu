@@ -77,20 +77,20 @@ private val repositoryModule = module {
 }
 
 private val interactorModule = module {
-    single { AnimeInteractor(get()) }
+    single { AnimeInteractor(get(), get()) }
     single { PostInteractor(get()) }
-    single { UserInteractor(get()) }
+    single { UserInteractor(get(), get()) }
 }
 
 private val viewModelModules = module {
     viewModel { FeedViewTabModel(get(), get()) }
-    viewModel { MovieTabViewModel(get(), get()) }
-    viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get(), get()) }
+    viewModel { MovieTabViewModel(get()) }
+    viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get()) }
     viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
-    viewModel { AnimeListViewModel(get(), get()) }
+    viewModel { AnimeListViewModel(get()) }
     viewModel { (animeId: Long) -> AnimeDetailsViewModel(animeId, get()) }
-    viewModel { PostCreateViewModel(get(), get()) }
-    viewModel { CurrentProfileViewModel(get(), get()) }
+    viewModel { PostCreateViewModel(get()) }
+    viewModel { CurrentProfileViewModel(get()) }
 }
 
 private val utils = module {

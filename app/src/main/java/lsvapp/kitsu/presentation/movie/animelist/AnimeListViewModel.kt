@@ -7,14 +7,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import lsvapp.kitsu.domain.entity.Anime
-import lsvapp.kitsu.domain.entity.dto.AnimeDto
-import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 
 class AnimeListViewModel(
-    private val animeInteractor: AnimeInteractor,
-    private val dtoConverter: DtoConverter
+    private val animeInteractor: AnimeInteractor
 ) : ViewModel() {
 
     private val _errorEvent = MutableStateFlow<String?>(null)
@@ -34,9 +31,7 @@ class AnimeListViewModel(
                 val animeDto = animeInteractor.getAnime(
                     page = params.key ?: 0,
                     size = params.loadSize
-                ).data.map {
-                    dtoConverter.dataToAnime(it)
-                }
+                )
                 LoadResult.Page(
                     data = animeDto,
                     prevKey = params.key?.let { it - 1 },

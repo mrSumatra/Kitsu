@@ -11,8 +11,7 @@ import lsvapp.kitsu.domain.entity.utils.DtoConverter
 import lsvapp.kitsu.domain.interactor.UserInteractor
 
 class PostCreateViewModel(
-    private val userInteractor: UserInteractor,
-    private val dtoConverter: DtoConverter
+    private val userInteractor: UserInteractor
 ) : ViewModel() {
 
     private val _createPostState = MutableStateFlow<PostCreateState>(PostCreateState.LoadingProfile)
@@ -27,7 +26,7 @@ class PostCreateViewModel(
             _createPostState.value = try {
                 val user = userInteractor.getCurrentUser()
                 delay(SERVER_RESPONSE)
-                PostCreateState.CurrentProfile(user = dtoConverter.dataToUser(user))
+                PostCreateState.CurrentProfile(user = user)
             } catch (e: Exception) {
                 PostCreateState.Error(e.message)
             }
