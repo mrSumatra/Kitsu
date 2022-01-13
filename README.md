@@ -12,7 +12,7 @@
 Стек
 архитектура: MVVM, Single Activity, Navigation, Coroutines, Paging3, LiveData или SharedFlow
 DI: Koin или Dagger2
-network: Okhttp, retrofi2, Moshi
+network: Okhttp, retrofit2, Moshi
 pictures: Coil
 test: под вопросом
 design: Material, viewBindign и MoutionView (возможно)
