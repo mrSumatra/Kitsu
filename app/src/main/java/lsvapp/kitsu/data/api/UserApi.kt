@@ -1,6 +1,5 @@
 package lsvapp.kitsu.data.api
 
-import lsvapp.kitsu.domain.entity.dto.Data
 import lsvapp.kitsu.domain.entity.dto.Page
 import lsvapp.kitsu.domain.entity.dto.PageList
 import lsvapp.kitsu.domain.entity.dto.UserDto

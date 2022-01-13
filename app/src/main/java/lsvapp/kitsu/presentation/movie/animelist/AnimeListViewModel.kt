@@ -35,7 +35,7 @@ class AnimeListViewModel(
                 LoadResult.Page(
                     data = animeDto,
                     prevKey = params.key?.let { it - 1 },
-                    nextKey = (params.key ?: 0) + 1
+                    nextKey = if (animeDto.size < PAGE_SIZE) null else (params.key ?: 0) + 1
                 )
             } catch (e: Exception) {
                 _errorEvent.value = e.message

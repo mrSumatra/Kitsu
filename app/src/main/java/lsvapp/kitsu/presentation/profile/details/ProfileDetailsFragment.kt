@@ -43,7 +43,7 @@ class ProfileDetailsFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun initContent(user: User) {
-        binding.cover.load(user.coverImage?.original)
+        binding.cover.load(user.coverImage?.original ?: STUB_COVER_IMAGE_URL)
         binding.avatar.load(user.avatar?.original) {
             transformations(CircleCropTransformation())
             error(R.drawable.ic_profile)
@@ -62,5 +62,9 @@ class ProfileDetailsFragment : Fragment(R.layout.fragment_profile) {
         binding.followers.text = user.followersCount
         binding.following.text = user.followingCount
         binding.about.text = user.about ?: getString(R.string.profile_details_about_stub)
+    }
+
+    companion object {
+        const val STUB_COVER_IMAGE_URL = "https://wallpaperaccess.com/full/2621363.jpg"
     }
 }

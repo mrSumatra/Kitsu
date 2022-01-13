@@ -25,12 +25,10 @@ class GroupeTabViewModel(
             return try {
                 val groups = groupeInteractor.getGroups()
 
-                val page = params.key ?: 1
-                val pageSize = params.loadSize
                 LoadResult.Page(
                     data = groups,
-                    prevKey = if (page == 1) null else page - 1,
-                    nextKey = if (groups.size < pageSize) null else page + 1
+                    prevKey = params.key?.let { it - 1 },
+                    nextKey = if (groups.size < PAGE_SIZE) null else (params.key ?: 0) + 1
                 )
             } catch (e: Exception) {
                 println("ERROR = ${e.message}")

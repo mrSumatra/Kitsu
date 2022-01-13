@@ -8,4 +8,5 @@
     <color name="gray200">#959595</color>
 
     <color name="purple_alpha">#666200EE</color>
+    <color name="black_alpha">#4D000000</color>
 </resources>
