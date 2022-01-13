@@ -18,7 +18,7 @@ class PostViewHolder(
             placeholder(R.drawable.ic_profile)
         }
         binding.authorName.text = item.post.author.name
-        binding.postCreate.text = item.post.createdAt.toString()
+        binding.postCreate.text = item.post.createdAt
         binding.contentText.text = item.post.content
         binding.like.text = item.post.postLikesCount.toString()
         binding.comments.text = item.post.commentsCount.toString()
