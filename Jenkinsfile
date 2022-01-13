@@ -9,14 +9,14 @@ pipeline {
         stage ('Test & Build Artifact') {
             agent {
                 docker {
-                    image 'openjdk:11'
+                    image 'thyrlian/android-sdk'
                     args '-v "$PWD":/app'
                     reuseNode true
                 }
             }
             steps {
                 sh 'chmod +x gradlew'
-                sh './gradlew clean build'
+                sh '././gradlew build --no-daemon'
             }
         }
     }
