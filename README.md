@@ -2,9 +2,6 @@
 но с другим дизайном и с дополнительной возможностью просмотра хотя бы трейлера к выбранному аниме.
 
 Экраны: 
-Сплеш скрин
-Онбординг
-Авторизация
 главный экран:
 Лента
 Экран со списком аниме, детализация выбранного аниме
@@ -15,7 +12,7 @@
 Стек
 архитектура: MVVM, Single Activity, Navigation, Coroutines, Paging3, LiveData или SharedFlow
 DI: Koin или Dagger2
-network: Okhttp, retrofi2, Moshi
+network: Okhttp, retrofit2, Moshi
 pictures: Coil
 test: под вопросом
 design: Material, viewBindign и MoutionView (возможно)
