@@ -5,30 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/loading"
-        style="@style/Widget.Kitsu.Progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <lsvapp.kitsu.presentation.utils.widget.StubView
-        android:id="@+id/error"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/command_error">
-
-    </lsvapp.kitsu.presentation.utils.widget.StubView>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/annonce.main.coordinator"
         android:layout_width="match_parent"
@@ -59,7 +35,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_eye"
                     android:tint="@color/purple_alpha"
                     tools:src="@tools:sample/avatars" />
 
@@ -112,8 +87,8 @@
 
                             <TextView
                                 android:id="@+id/following"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:textAlignment="viewStart"
                                 android:textColor="?colorPrimary"
                                 android:textSize="@dimen/text_headline3"
@@ -142,8 +117,8 @@
 
                             <TextView
                                 android:id="@+id/like"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:textAlignment="viewStart"
                                 android:textColor="?colorPrimary"
                                 android:textSize="@dimen/text_headline3"
@@ -171,7 +146,7 @@
 
                             <TextView
                                 android:id="@+id/followers"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textAlignment="viewStart"
                                 android:textColor="?colorPrimary"
@@ -256,4 +231,30 @@
             app:layout_constraintWidth_percent="0.5"
             tools:srcCompat="@tools:sample/avatars" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <lsvapp.kitsu.presentation.utils.widget.StubView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/command_error"
+        tools:visibility="gone">
+
+    </lsvapp.kitsu.presentation.utils.widget.StubView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="@style/Widget.Kitsu.Progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

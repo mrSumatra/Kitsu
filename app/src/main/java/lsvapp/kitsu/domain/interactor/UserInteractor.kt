@@ -19,7 +19,7 @@ class UserInteractor(
 
     suspend fun getUserById(id: Long): User {
         val user = userRepository.getUserById(id)
-        return dtoConverter.dataToUser(user)
+        return dtoConverter.dataToUser(user.data)
     }
 
     fun getCurrentUser() = dtoConverter.dataToUser(currentUser)

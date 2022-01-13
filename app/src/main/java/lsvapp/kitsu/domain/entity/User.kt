@@ -14,7 +14,7 @@ data class User(
     /**
      * Имя
      */
-    val name: String,
+    val name: String?,
 
     /**
      * Информация

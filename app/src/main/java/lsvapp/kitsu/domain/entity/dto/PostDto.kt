@@ -10,7 +10,7 @@ data class PostDto(
     val createdAt: String,
 
     @Json(name = "content")
-    val content: String,
+    val content: String?,
 
     @Json(name = "commentsCount")
     val commentsCount: Int,

@@ -35,6 +35,12 @@
     <string name="profile_details_followers_title">followers</string>
     <string name="profile_details_following_title">following</string>
 
+    <string name="profile_details_no_name_stub">No Name</string>
+    <string name="profile_details_location_stub">No location</string>
+    <string name="profile_details_birth_date_stub">No birth date</string>
+    <string name="profile_details_gender_stub">No gender</string>
+    <string name="profile_details_about_stub">No about me</string>
+
 
 
 

@@ -1,6 +1,7 @@
 package lsvapp.kitsu.data.api
 
 import lsvapp.kitsu.domain.entity.dto.Data
+import lsvapp.kitsu.domain.entity.dto.Page
 import lsvapp.kitsu.domain.entity.dto.PageList
 import lsvapp.kitsu.domain.entity.dto.UserDto
 import retrofit2.http.GET
@@ -16,5 +17,5 @@ interface UserApi {
     ): PageList<UserDto>
 
     @GET("users/{id}")
-    suspend fun getUserById(@Path("id") id: Long): Data<UserDto>
+    suspend fun getUserById(@Path("id") id: Long): Page<UserDto>
 }

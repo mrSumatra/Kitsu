@@ -24,7 +24,7 @@ data class Post(
     /**
      * Контент
      */
-    val content: String,
+    val content: String?,
 
     /**
      * Кол-во коментариев

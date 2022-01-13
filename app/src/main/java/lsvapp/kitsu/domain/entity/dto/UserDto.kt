@@ -8,7 +8,7 @@ import lsvapp.kitsu.domain.entity.Image
 data class UserDto(
 
     @Json(name = "name")
-    val name: String,
+    val name: String?,
 
     @Json(name = "about")
     val about: String?,
