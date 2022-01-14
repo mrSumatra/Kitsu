@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_normal">
+    android:paddingVertical="@dimen/spacing_normal"
+    android:paddingRight="@dimen/spacing_normal">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:backgroundTint="?colorPrimary"
         app:cardCornerRadius="@dimen/card_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
