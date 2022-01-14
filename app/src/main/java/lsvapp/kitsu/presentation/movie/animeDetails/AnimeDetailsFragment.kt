@@ -33,7 +33,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         super.onViewCreated(view, savedInstanceState)
 
         initContent()
-        initEpisode()
+        initInfo()
     }
 
     private fun initContent() {
@@ -57,13 +57,14 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         binding.descContent.text = args.anime.description
     }
 
-    private fun initEpisode() {
+    private fun initInfo() {
         lifecycleScope.launchWhenResumed {
             viewModel.episodeState.collect { state ->
                 binding.episodeLoading.isVisible = state is EpisodeState.Loading
 
                 if (state is EpisodeState.Content) {
                     initEpisodeAdapter(state.episodes)
+                    initCategories(state.categories.map { it.title })
                 }
             }
         }
@@ -95,5 +96,9 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
             )
         )
         mainRouter.onCommand(navCommand)
+    }
+
+    private fun initCategories(categories: List<String>) {
+        binding.categories.setAdapterItem(categories)
     }
 }

@@ -13,4 +13,6 @@ class AnimeRepository(
     suspend fun getAnimeEpisodes(id: Long) = animeApi.getAnimeEpisodes(id = id)
 
     suspend fun getAnimeEpisodesById(id: Long) = animeApi.getAnimeEpisodesById(id = id)
+
+    suspend fun getAnimeCategories(id: Long) = animeApi.getAnimeCategories(id = id)
 }

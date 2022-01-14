@@ -73,4 +73,10 @@ class DtoConverter {
         name = data.attributes.name,
         avatar = data.attributes.avatar
     )
+
+    fun dataToAnimeCategories(data: Data<AnimeCategoryDto>) = AnimeCategory(
+        id = data.id,
+        title = data.attributes.title,
+        totalMediaCount = data.attributes.totalMediaCount
+    )
 }

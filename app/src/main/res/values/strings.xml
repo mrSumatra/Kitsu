@@ -24,6 +24,7 @@
     <string name="anime_details_trailer">watch trailer</string>
     <string name="anime_desc_title">Description</string>
     <string name="anime_episode_title">Episode</string>
+    <string name="anime_episode_category">Category</string>
     <string name="anime_episode_total_template">total %d</string>
 
     <!--PostCreate-->

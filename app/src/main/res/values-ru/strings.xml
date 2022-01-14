@@ -25,6 +25,7 @@
     <string name="anime_details_trailer">смотреть трейлер</string>
     <string name="anime_desc_title">Описание</string>
     <string name="anime_episode_title">Серии</string>
+    <string name="anime_episode_category">Жанры</string>
     <string name="anime_episode_total_template">всего %d</string>
 
     <!--PostCreate-->

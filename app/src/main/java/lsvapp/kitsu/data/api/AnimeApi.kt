@@ -1,9 +1,6 @@
 package lsvapp.kitsu.data.api
 
-import lsvapp.kitsu.domain.entity.dto.AnimeDto
-import lsvapp.kitsu.domain.entity.dto.AnimeEpisodeDto
-import lsvapp.kitsu.domain.entity.dto.Page
-import lsvapp.kitsu.domain.entity.dto.PageList
+import lsvapp.kitsu.domain.entity.dto.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -25,10 +22,7 @@ interface AnimeApi {
     @GET("episodes/{id}")
     suspend fun getAnimeEpisodesById(@Path("id") id: Long): Page<AnimeEpisodeDto>
 
-//
-//    @GET("anime/{id}/categories")
-//    suspend fun getAnimeCategories(
-//        @Path("id") id: Long
-//    ): PageList<AnimeEpisodeDto>
+    @GET("anime/{id}/categories")
+    suspend fun getAnimeCategories(@Path("id") id: Long): PageList<AnimeCategoryDto>
 
 }

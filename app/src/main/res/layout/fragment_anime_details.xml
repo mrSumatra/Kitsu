@@ -157,7 +157,7 @@
                 android:id="@+id/desc_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/spacing_normal"
                 android:text="@string/anime_desc_title"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_headline5"
@@ -177,6 +177,24 @@
                 tools:text="@tools:sample/lorem" />
 
             <TextView
+                android:id="@+id/categories_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="@string/anime_episode_category"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_headline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_content" />
+
+            <lsvapp.kitsu.presentation.utils.widget.category.AnimeCategoryView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:layout_constraintTop_toBottomOf="@+id/categories_title" />
+
+            <TextView
                 android:id="@+id/episode_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,7 +203,7 @@
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:textSize="@dimen/text_headline5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/desc_content" />
+                app:layout_constraintTop_toBottomOf="@+id/categories" />
 
             <ProgressBar
                 android:id="@+id/episode_loading"
