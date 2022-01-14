@@ -14,10 +14,13 @@ import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentAnimeDetailsBinding
 import lsvapp.kitsu.domain.entity.AnimeEpisode
+import lsvapp.kitsu.domain.entity.AnimeReaction
+import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
+import lsvapp.kitsu.presentation.utils.widget.reaction.adapter.ReactionAdapterItem
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -59,12 +62,13 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
 
     private fun initInfo() {
         lifecycleScope.launchWhenResumed {
-            viewModel.episodeState.collect { state ->
+            viewModel.infoState.collect { state ->
                 binding.episodeLoading.isVisible = state is EpisodeState.Loading
 
                 if (state is EpisodeState.Content) {
                     initEpisodeAdapter(state.episodes)
                     initCategories(state.categories.map { it.title })
+                    initReaction(state.reaction)
                 }
             }
         }
@@ -100,5 +104,18 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
 
     private fun initCategories(categories: List<String>) {
         binding.categories.setAdapterItem(categories)
+    }
+
+    private fun initReaction(reaction: List<AnimeReaction>) {
+        val items = reaction.map {
+            ReactionAdapterItem(
+                reaction = it
+            ) { openProfile(it.author.id) }
+        }
+        binding.reaction.setAdapterItem(items)
+    }
+
+    private fun openProfile(id: Long) {
+        mainRouter.onCommand(NavCommand.To(MainTabFragmentDirections.globalActionToProfileDetails(id)))
     }
 }

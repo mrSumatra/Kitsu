@@ -79,4 +79,10 @@ class DtoConverter {
         title = data.attributes.title,
         totalMediaCount = data.attributes.totalMediaCount
     )
+
+    fun dataToAnimeReaction(data: Data<AnimeReactionDto>, author: User) = AnimeReaction(
+        author = author,
+        createdAt = data.attributes.createdAt,
+        reaction = data.attributes.reaction
+    )
 }

@@ -17,6 +17,7 @@
     <dimen name="corners_radius_large">16dp</dimen>
 
     <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_radius">10dp</dimen>
 
     <dimen name="toolbar_btn_size">48dp</dimen>
 

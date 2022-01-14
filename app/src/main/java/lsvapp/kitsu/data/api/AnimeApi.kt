@@ -25,4 +25,10 @@ interface AnimeApi {
     @GET("anime/{id}/categories")
     suspend fun getAnimeCategories(@Path("id") id: Long): PageList<AnimeCategoryDto>
 
+    @GET("media-reactions")
+    suspend fun getAnimeReaction(@Query("filter[animeId]") id: Long): PageList<AnimeReactionDto>
+
+    @GET("media-reactions/{id}/relationships/user")
+    suspend fun getAnimeReactionUser(@Path("id") id: Long): DataShort
+
 }

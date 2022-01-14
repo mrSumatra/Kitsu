@@ -2,6 +2,7 @@
     <string name="app_name">Kitsu</string>
 
     <string name="command_error">Error</string>
+    <string name="command_profile_no_name">No name</string>
     <string name="min_template">%s min</string>
 
     <!--Bottom nav title-->
@@ -25,6 +26,7 @@
     <string name="anime_desc_title">Description</string>
     <string name="anime_episode_title">Episode</string>
     <string name="anime_episode_category">Category</string>
+    <string name="anime_episode_reaction">Reaction</string>
     <string name="anime_episode_total_template">total %d</string>
 
     <!--PostCreate-->

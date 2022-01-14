@@ -30,7 +30,7 @@ fun String.toHumanDataTime(): String {
 }
 
 fun LocalDateTime.toHumanDataTime(): String =
-    this.format(DateTimeFormatter.ofPattern("HH:mm dd MMM yyyy "))
+    this.format(DateTimeFormatter.ofPattern("HH:mm dd MMM yyyy"))
 
 
 fun Fragment.toShowError(text: CharSequence) =

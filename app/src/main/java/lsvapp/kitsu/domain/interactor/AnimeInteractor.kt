@@ -4,6 +4,7 @@ import lsvapp.kitsu.data.repository.AnimeRepository
 import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.AnimeCategory
 import lsvapp.kitsu.domain.entity.AnimeEpisode
+import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.domain.entity.utils.DtoConverter
 
 class AnimeInteractor(
@@ -35,4 +36,8 @@ class AnimeInteractor(
         repository.getAnimeCategories(id = id).data.map {
             dtoConverter.dataToAnimeCategories(it)
         }
+
+    suspend fun getAnimeReaction(id: Long) = repository.getAnimeReaction(id)
+
+    suspend fun getReactionUser(id: Long) = repository.getReactionUser(id)
 }

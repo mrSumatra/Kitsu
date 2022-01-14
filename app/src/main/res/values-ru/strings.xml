@@ -2,6 +2,7 @@
     <string name="app_name">Kitsu</string>
 
     <string name="command_error">Ошибка</string>
+    <string name="command_profile_no_name">Имя не известно</string>
     <string name="min_template">%s мин</string>
 
     <!--Bottom nav title-->
@@ -26,6 +27,7 @@
     <string name="anime_desc_title">Описание</string>
     <string name="anime_episode_title">Серии</string>
     <string name="anime_episode_category">Жанры</string>
+    <string name="anime_episode_reaction">Отзывы</string>
     <string name="anime_episode_total_template">всего %d</string>
 
     <!--PostCreate-->

@@ -96,7 +96,12 @@ private val viewModelModules = module {
     viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get()) }
     viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
     viewModel { AnimeListViewModel(get()) }
-    viewModel { (animeId: Long) -> AnimeDetailsViewModel(animeId, get()) }
+    viewModel { (animeId: Long) ->
+        AnimeDetailsViewModel(
+            animeId, get(), get(
+            ), get()
+        )
+    }
     viewModel { PostCreateViewModel(get()) }
     viewModel { CurrentProfileViewModel(get()) }
     viewModel { GroupeTabViewModel(get()) }
