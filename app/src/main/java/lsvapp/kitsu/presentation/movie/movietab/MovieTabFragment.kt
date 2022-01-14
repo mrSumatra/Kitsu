@@ -27,6 +27,17 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initToolbar()
+        initContent()
+    }
+
+    private fun initToolbar() {
+        binding.toolbar.editRightEndIcon {
+            setImageResource(R.drawable.ic_filter)
+        }
+    }
+
+    private fun initContent() {
         lifecycleScope.launchWhenResumed {
             viewModel.animeState.collect { state ->
                 binding.animeProgress.isVisible = state is MovieTabState.Loading
@@ -37,18 +48,20 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
                 )
 
                 binding.popularContent.isVisible = state is MovieTabState.Content
+                binding.amazonContent.isVisible = state is MovieTabState.Content
+                binding.actualContent.isVisible = state is MovieTabState.Content
 
                 if (state is MovieTabState.Content) {
                     initAnime(state.anime)
+                    initAnimeActual(state.actualAnime)
+                    initAnimeByAmazon(state.animeByAmazon)
                 }
             }
         }
     }
 
     private fun initAnime(anime: List<Anime>) {
-        val items = anime.filter {
-            it.averageRating.toDouble() > SORT_RATING
-        }.map {
+        val items = anime.map {
             ContentViewerItem.Content(
                 title = it.canonicalTitle,
                 ageRating = it.ageRating.toString(),
@@ -65,6 +78,38 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         binding.popularContent.setContent(items)
     }
 
+    private fun initAnimeActual(anime: List<Anime>) {
+        val items = anime.map {
+            ContentViewerItem.Content(
+                title = it.canonicalTitle,
+                ageRating = it.ageRating.toString(),
+                rating = it.averageRating,
+                imageLink = it.posterImage.original
+            ) { openDetails(it) }
+        }.plus(
+            ContentViewerItem.AllMovie(
+                title = getString(R.string.movie_all_movie_title)
+            ) { openAnime() }
+        )
+        binding.actualContent.setContent(items)
+    }
+
+    private fun initAnimeByAmazon(anime: List<Anime>) {
+        val items = anime.map {
+            ContentViewerItem.Content(
+                title = it.canonicalTitle,
+                ageRating = it.ageRating.toString(),
+                rating = it.averageRating,
+                imageLink = it.posterImage.original
+            ) { openDetails(it) }
+        }.plus(
+            ContentViewerItem.AllMovie(
+                title = getString(R.string.movie_all_movie_title)
+            ) { openAnime() }
+        )
+        binding.amazonContent.setContent(items)
+    }
+
     private fun openAnime() {
         val navCommand = NavCommand.To(MainTabFragmentDirections.globalActionToAnimeFragment())
         mainRouter.onCommand(navCommand)
@@ -74,9 +119,5 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         val navCommand =
             NavCommand.To(AnimeListFragmentDirections.globalActionToAnimeDetailsFragment(animeDto))
         mainRouter.onCommand(navCommand)
-    }
-
-    companion object {
-        const val SORT_RATING: Double = 80.0
     }
 }

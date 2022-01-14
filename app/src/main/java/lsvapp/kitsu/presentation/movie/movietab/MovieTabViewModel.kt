@@ -2,6 +2,7 @@ package lsvapp.kitsu.presentation.movie.movietab
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -21,15 +22,18 @@ class MovieTabViewModel(
     private fun initState() {
         viewModelScope.launch {
             _animeState.value = try {
-                val anime = animeInteractor.getAnime(page = 0, size = PAGE_SIZE)
-                MovieTabState.Content(anime = anime)
+                val anime = async { animeInteractor.getAnime() }
+                val actualAnime = async { animeInteractor.getAnime(seasonYear = "2022") }
+                val animeByAmazon = async { animeInteractor.getAnime(streamers = "Amazon") }
+                MovieTabState.Content(
+                    anime = anime.await(),
+                    actualAnime = actualAnime.await(),
+                    animeByAmazon = animeByAmazon.await()
+                )
             } catch (e: Exception) {
                 MovieTabState.Error(e.message)
             }
         }
     }
 
-    companion object {
-        const val PAGE_SIZE = 20
-    }
 }

@@ -7,7 +7,7 @@
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">feed</string>
-    <string name="bottom_nav_title_movie">movie</string>
+    <string name="bottom_nav_title_movie">anime</string>
     <string name="bottom_nav_title_group">group</string>
     <string name="bottom_nav_title_profile">profile</string>
 
@@ -19,7 +19,9 @@
     <string name="movie_anime_title">ANIME</string>
     <string name="movie_manga_title">MANGA</string>
     <string name="movie_all_movie_title">View All</string>
-    <string name="movie_anime_popular">high rating</string>
+    <string name="movie_anime_popular">High rating</string>
+    <string name="movie_anime_actual">this year</string>
+    <string name="movie_anime_by_amazon">bu Amazon</string>
 
     <!--AnimeDetails-->
     <string name="anime_details_trailer">watch trailer</string>

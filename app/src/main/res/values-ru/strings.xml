@@ -20,7 +20,9 @@
     <string name="movie_manga_title">МАНГА</string>
     <string name="movie_all_movie_title">Показать еще</string>
 
-    <string name="movie_anime_popular">c высоким рейтингом</string>
+    <string name="movie_anime_popular">C высоким рейтингом</string>
+    <string name="movie_anime_actual">В этом году</string>
+    <string name="movie_anime_by_amazon">C amazon</string>
 
     <!--AnimeDetails-->
     <string name="anime_details_trailer">смотреть трейлер</string>

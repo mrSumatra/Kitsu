@@ -11,6 +11,8 @@ interface AnimeApi {
     suspend fun getAnime(
         @Query("page[offset]") page: Int? = null,
         @Query("page[limit]") size: Int? = null,
+        @Query("filter[seasonYear]") seasonYear: String? = null,
+        @Query("filter[streamers]") streamers: String? = null,
     ): PageList<AnimeDto>
 
     @GET("anime/{id}")

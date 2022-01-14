@@ -27,7 +27,7 @@ data class Anime(
 
     val ageRating: AgeRating?,
 
-    val averageRating: String,
+    val averageRating: String?,
 
     val popularityRank: Int,
 

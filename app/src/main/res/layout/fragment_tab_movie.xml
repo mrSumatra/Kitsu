@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/spacing_normal">
+    android:layout_height="match_parent">
+
+    <lsvapp.kitsu.presentation.utils.widget.CenterToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:view_toolbar_title="@string/bottom_nav_title_movie" />
 
     <lsvapp.kitsu.presentation.utils.widget.StubView
         android:id="@+id/error"
@@ -27,61 +36,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nestedScrollView"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:fillViewport="true"
+        android:padding="@dimen/spacing_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/anime_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/movie_anime_title"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_headline4" />
-
             <lsvapp.kitsu.presentation.utils.widget.ContentViewer
                 android:id="@+id/popular_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:content_view_title="@string/movie_anime_popular"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+
+            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+                android:id="@+id/actual_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:content_view_title="@string/movie_anime_actual"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+
+            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+                android:id="@+id/amazon_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:content_view_title="@string/movie_anime_by_amazon"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/manga_title"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/movie_manga_title"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:layout_marginTop="@dimen/spacing_normal"-->
-    <!--        android:textSize="@dimen/text_headline4"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/anime_recycler" />-->
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/manga_recycler"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        app:layoutManager="LinearLayoutManager"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/anime_title"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/manga_title"-->
-    <!--        tools:itemCount="3"-->
-    <!--        tools:listitem="@layout/anime_item" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
