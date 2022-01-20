@@ -42,6 +42,7 @@
     <string name="profile_details_followers_title">подписчики</string>
     <string name="profile_details_following_title">подписки</string>
 
+    <string name="profile_info_title">Информация о пользователе</string>
     <string name="profile_details_no_name_stub">Имя не известно</string>
     <string name="profile_details_location_stub">Нет локации</string>
     <string name="profile_details_birth_date_stub">Нет даты рождения</string>

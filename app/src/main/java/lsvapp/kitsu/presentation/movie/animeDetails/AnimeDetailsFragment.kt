@@ -57,15 +57,17 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         binding.title.text = args.anime.canonicalTitle
         binding.userViewing.text = args.anime.userCount.toString()
         binding.time.text = args.anime.episodeLength.toString()
+        binding.time.text = getString(R.string.min_template, args.anime.episodeLength)
         binding.descContent.text = args.anime.description
     }
 
     private fun initInfo() {
         lifecycleScope.launchWhenResumed {
             viewModel.infoState.collect { state ->
-                binding.episodeLoading.isVisible = state is EpisodeState.Loading
+                binding.episodeLoading.isVisible = state is DetailsInfo.Loading
+                binding.detailsLinear.isVisible = state is DetailsInfo.Content
 
-                if (state is EpisodeState.Content) {
+                if (state is DetailsInfo.Content) {
                     initEpisodeAdapter(state.episodes)
                     initCategories(state.categories.map { it.title })
                     initReaction(state.reaction)

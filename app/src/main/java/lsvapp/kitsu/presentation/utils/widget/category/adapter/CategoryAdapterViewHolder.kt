@@ -9,6 +9,9 @@ class CategoryAdapterViewHolder(
 
     fun bind(item: String) {
         binding.categoryTitle.text = item
+        binding.categoryTitle.setOnClickListener{
+
+        }
     }
 
 }

@@ -20,8 +20,8 @@ class AnimeDetailsViewModel(
     private val dtoConverter: DtoConverter
 ) : ViewModel() {
 
-    private val _infoState = MutableStateFlow<EpisodeState>(EpisodeState.Loading)
-    val infoState: StateFlow<EpisodeState> = _infoState
+    private val _infoState = MutableStateFlow<DetailsInfo>(DetailsInfo.Loading)
+    val infoState: StateFlow<DetailsInfo> = _infoState
 
     init {
         initState()
@@ -40,14 +40,14 @@ class AnimeDetailsViewModel(
                         dtoConverter.dataToAnimeReaction(it, author = author)
                     }
                 }
-                EpisodeState.Content(
+                DetailsInfo.Content(
                     episodes = episodes.await(),
                     categories = categories.await(),
                     reaction = animeReaction.await()
                 )
             } catch (e: Exception) {
                 println("ERROR = ${e.message}")
-                EpisodeState.Error(e.message)
+                DetailsInfo.Error(e.message)
             }
         }
     }
@@ -57,14 +57,14 @@ class AnimeDetailsViewModel(
     }
 }
 
-sealed class EpisodeState {
-    object Loading : EpisodeState()
+sealed class DetailsInfo {
+    object Loading : DetailsInfo()
     data class Content(
         val episodes: List<AnimeEpisode>,
         val categories: List<AnimeCategory>,
         val reaction: List<AnimeReaction>
     ) :
-        EpisodeState()
+        DetailsInfo()
 
-    data class Error(val message: String?) : EpisodeState()
+    data class Error(val message: String?) : DetailsInfo()
 }

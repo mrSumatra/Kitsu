@@ -176,81 +176,80 @@
                 app:layout_constraintTop_toBottomOf="@+id/desc_title"
                 tools:text="@tools:sample/lorem" />
 
-            <TextView
-                android:id="@+id/categories_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:text="@string/anime_episode_category"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_headline5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/desc_content" />
-
-            <lsvapp.kitsu.presentation.utils.widget.category.AnimeCategoryView
-                android:id="@+id/categories"
+            <LinearLayout
+                android:id="@+id/details_linear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/spacing_normal"
-                app:layout_constraintTop_toBottomOf="@+id/categories_title"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_category"
-                />
-
-            <TextView
-                android:id="@+id/episode_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/anime_episode_title"
-                android:textColor="@color/white"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:textSize="@dimen/text_headline5"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categories" />
+                app:layout_constraintTop_toBottomOf="@+id/desc_content"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/categories_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:text="@string/anime_episode_category"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_headline5" />
+
+                <lsvapp.kitsu.presentation.utils.widget.category.AnimeCategoryView
+                    android:id="@+id/categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_category" />
+
+                <TextView
+                    android:id="@+id/episode_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:text="@string/anime_episode_title"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_headline5" />
+
+                <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+                    android:id="@+id/contentViewer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+
+                <TextView
+                    android:id="@+id/reaction_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anime_episode_reaction"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_headline5" />
+
+                <lsvapp.kitsu.presentation.utils.widget.reaction.ReactionView
+                    android:id="@+id/reaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_reaction">
+                </lsvapp.kitsu.presentation.utils.widget.reaction.ReactionView>
+
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/episode_loading"
                 style="@style/Widget.Kitsu.Progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/contentViewer"
-                app:layout_constraintEnd_toEndOf="@+id/contentViewer"
-                app:layout_constraintStart_toStartOf="@+id/contentViewer"
-                app:layout_constraintTop_toTopOf="@+id/contentViewer"
-                tools:visibility="visible" />
-
-            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
-                android:id="@+id/contentViewer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/episode_title">
+                app:layout_constraintTop_toBottomOf="@+id/desc_content"
+                tools:visibility="visible" />
 
-            </lsvapp.kitsu.presentation.utils.widget.ContentViewer>
-
-            <TextView
-                android:id="@+id/reaction_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/anime_episode_reaction"
-                android:textColor="@color/white"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:textSize="@dimen/text_headline5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contentViewer" />
-
-            <lsvapp.kitsu.presentation.utils.widget.reaction.ReactionView
-                android:id="@+id/reaction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal"
-                app:layout_constraintTop_toBottomOf="@+id/reaction_title"
-                tools:listitem="@layout/item_reaction"
-                tools:itemCount="3"
-                >
-            </lsvapp.kitsu.presentation.utils.widget.reaction.ReactionView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/spacing_small"
+    android:focusable="?selectableItemBackground"
     android:background="@drawable/category_border"
     android:paddingHorizontal="@dimen/spacing_normal"
     android:paddingVertical="@dimen/spacing_small"

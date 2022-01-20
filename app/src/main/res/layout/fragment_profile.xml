@@ -208,6 +208,18 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/user_info_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:text="@string/profile_info_title"
+                    android:layout_marginStart="@dimen/spacing_normal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_headline5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_trailer" />
+
+                <TextView
                     android:id="@+id/about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -223,6 +235,8 @@
             android:layout_height="@dimen/spacing_huge"
             android:layout_marginRight="32dp"
             android:scaleType="centerCrop"
+            android:background="@drawable/profile_avatar_placeholder"
+            android:foreground="@drawable/profile_avatar_border"
             app:layout_anchor="@id/flexible.example.cardview"
             app:layout_anchorGravity="top|right|end"
             app:layout_constraintBottom_toBottomOf="parent"
