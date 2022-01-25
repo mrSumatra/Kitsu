@@ -42,6 +42,7 @@
                     android:layout_height="0dp"
                     android:foreground="@drawable/image_border"
                     android:scaleType="centerCrop"
+                    android:background="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.7"

@@ -13,6 +13,7 @@ import coil.transform.RoundedCornersTransformation
 import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentAnimeDetailsBinding
+import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.AnimeEpisode
 import lsvapp.kitsu.domain.entity.AnimeReaction
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
@@ -37,15 +38,15 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initContent()
+        initContent(args.anime)
         initInfo()
     }
 
-    private fun initContent() {
-        binding.image.load(args.anime.coverImage?.original) {
+    private fun initContent(anime: Anime) {
+        binding.image.load(anime.coverImage?.original ?: anime.posterImage.original) {
             transformations(BlurTransformation(requireContext()))
         }
-        binding.imageCover.load(args.anime.posterImage.original) {
+        binding.imageCover.load(anime.posterImage.original) {
             RoundedCornersTransformation(
                 TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,
@@ -54,28 +55,28 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
                 )
             )
         }
-        args.anime.ageRating?.let {
+        anime.ageRating?.let {
             binding.ageRating.isVisible = true
             binding.ageRating.text = it.toString()
         }
-        args.anime.averageRating?.let {
+        anime.averageRating?.let {
             binding.rating.isVisible = true
             binding.rating.text = it
         }
-        args.anime.startDate?.let {
+        anime.startDate?.let {
             binding.date.isVisible = true
             binding.date.text = it
         }
 
-        args.anime.episodeCount?.let {
+        anime.episodeCount?.let {
             binding.episode.isVisible = true
             binding.episode.text = getString(R.string.episode_template, it.toString())
         }
 
-        binding.title.text = args.anime.canonicalTitle
-        binding.userViewing.text = args.anime.userCount.toString()
+        binding.title.text = anime.canonicalTitle
+        binding.userViewing.text = anime.userCount.toString()
         binding.time.text = getString(R.string.min_template, args.anime.episodeLength)
-        binding.descContent.text = args.anime.description
+        binding.descContent.text = anime.description
     }
 
     private fun initInfo() {
