@@ -11,6 +11,7 @@ import lsvapp.kitsu.databinding.FragmentTabMovieBinding
 import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListFragmentDirections
+import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
@@ -73,12 +74,13 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }.plus(
             ContentViewerItem.AllMovie(
                 title = getString(R.string.movie_all_movie_title)
-            ) { openAnime() }
+            ) { openAnime(AnimeListParam()) }
         )
         binding.popularContent.setContent(items)
     }
 
     private fun initAnimeActual(anime: List<Anime>) {
+        val season = "2021"
         val items = anime.map {
             ContentViewerItem.Content(
                 title = it.canonicalTitle,
@@ -89,7 +91,7 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }.plus(
             ContentViewerItem.AllMovie(
                 title = getString(R.string.movie_all_movie_title)
-            ) { openAnime() }
+            ) { openAnime(AnimeListParam(seasonYear = season, title = "anime $season")) }
         )
         binding.actualContent.setContent(items)
     }
@@ -105,13 +107,17 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }.plus(
             ContentViewerItem.AllMovie(
                 title = getString(R.string.movie_all_movie_title)
-            ) { openAnime() }
+            ) { openAnime(AnimeListParam(streamers = "Amazon", title = "by Amazon")) }
         )
         binding.amazonContent.setContent(items)
     }
 
-    private fun openAnime() {
-        val navCommand = NavCommand.To(MainTabFragmentDirections.globalActionToAnimeFragment())
+    private fun openAnime(param: AnimeListParam) {
+        val navCommand = NavCommand.To(
+            MainTabFragmentDirections.globalActionToAnimeFragment(
+                param
+            )
+        )
         mainRouter.onCommand(navCommand)
     }
 

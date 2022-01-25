@@ -1,6 +1,7 @@
 package lsvapp.kitsu.presentation.movie.animelist.adapter
 
 import android.util.TypedValue
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -22,9 +23,15 @@ class AnimeListViewHolder(
                 )
             )
         }
+        itemList.anime.ageRating?.let {
+            binding.ageRating.isVisible = true
+            binding.ageRating.text = it.toString()
+        }
+        itemList.anime.averageRating?.let {
+            binding.rating.isVisible = true
+            binding.rating.text = it
+        }
         binding.title.text = itemList.anime.canonicalTitle
-        binding.rating.text = itemList.anime.averageRating
-        binding.ageRating.text = itemList.anime.ageRating.toString()
 
         binding.root.setOnClickListener {
             itemList.action.invoke()

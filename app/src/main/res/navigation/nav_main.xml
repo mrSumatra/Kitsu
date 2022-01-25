@@ -44,12 +44,17 @@
 
     <action
         android:id="@+id/global_action_to_anime_fragment"
-        app:destination="@id/animeFragment"></action>
+        app:destination="@id/animeListFragment"></action>
 
     <fragment
-        android:id="@+id/animeFragment"
+        android:id="@+id/animeListFragment"
         android:name="lsvapp.kitsu.presentation.movie.animelist.AnimeListFragment"
-        android:label="AnimeFragment" />
+        android:label="AnimeFragment">
+        <argument
+            android:name="screenParams"
+            app:argType="lsvapp.kitsu.presentation.movie.animelist.AnimeListParam" />
+    </fragment>
+
     <fragment
         android:id="@+id/feedTabFragment"
         android:name="lsvapp.kitsu.presentation.feed.tab.FeedTabFragment"

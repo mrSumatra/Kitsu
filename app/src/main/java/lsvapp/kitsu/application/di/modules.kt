@@ -20,6 +20,7 @@ import lsvapp.kitsu.presentation.feed.postdetails.PostDetailsViewModel
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 import lsvapp.kitsu.presentation.group.GroupeTabViewModel
 import lsvapp.kitsu.presentation.movie.animeDetails.AnimeDetailsViewModel
+import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListViewModel
 import lsvapp.kitsu.presentation.movie.episcodeDetails.AnimeEpisodeViewModel
 import lsvapp.kitsu.presentation.movie.movietab.MovieTabViewModel
@@ -95,7 +96,7 @@ private val viewModelModules = module {
     viewModel { MovieTabViewModel(get()) }
     viewModel { (profileId: Long) -> ProfileDetailsViewModel(profileId, get()) }
     viewModel { (postId: Long) -> PostDetailsViewModel(postId, get(), get()) }
-    viewModel { AnimeListViewModel(get()) }
+    viewModel { (params: AnimeListParam) -> AnimeListViewModel(params, get()) }
     viewModel { (animeId: Long) ->
         AnimeDetailsViewModel(
             animeId, get(), get(

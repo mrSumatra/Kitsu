@@ -17,7 +17,7 @@
     <string name="comment_no_data_title">No comment</string>
 
     <!--Movie-->
-    <string name="movie_anime_title">ANIME</string>
+    <string name="movie_anime_title">Anime</string>
     <string name="movie_manga_title">MANGA</string>
     <string name="movie_all_movie_title">View All</string>
     <string name="movie_anime_popular">High rating</string>

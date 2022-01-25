@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.map
@@ -22,11 +23,13 @@ import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class AnimeListFragment : Fragment(R.layout.fragment_anime_list) {
 
+    private val args: AnimeListFragmentArgs by navArgs()
     private val binding: FragmentAnimeListBinding by viewBinding()
-    private val listViewModel: AnimeListViewModel by viewModel()
+    private val listViewModel: AnimeListViewModel by viewModel { parametersOf(args.screenParams) }
     private val mainRouter: MainRouter by inject()
 
     private val adapter = AnimeListAdapter()
@@ -53,6 +56,7 @@ class AnimeListFragment : Fragment(R.layout.fragment_anime_list) {
     }
 
     private fun initToolbar() {
+        binding.toolbar.title = args.screenParams.title ?: getString(R.string.movie_anime_title)
         binding.toolbar.setBackNavigation { goBack() }
     }
 

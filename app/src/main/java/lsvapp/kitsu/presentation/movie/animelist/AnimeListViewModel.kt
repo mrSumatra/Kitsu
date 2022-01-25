@@ -11,6 +11,7 @@ import lsvapp.kitsu.domain.interactor.AnimeInteractor
 import lsvapp.kitsu.presentation.feed.tab.FeedViewTabModel
 
 class AnimeListViewModel(
+    private val param: AnimeListParam,
     private val animeInteractor: AnimeInteractor
 ) : ViewModel() {
 
@@ -30,7 +31,9 @@ class AnimeListViewModel(
             return try {
                 val animeDto = animeInteractor.getAnime(
                     page = params.key ?: 0,
-                    size = params.loadSize
+                    size = params.loadSize,
+                    seasonYear = param.seasonYear,
+                    streamers = param.streamers
                 )
                 LoadResult.Page(
                     data = animeDto,
