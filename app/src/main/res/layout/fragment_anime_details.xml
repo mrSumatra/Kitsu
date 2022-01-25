@@ -57,6 +57,7 @@
                     android:background="@drawable/rating_background"
                     android:backgroundTint="?colorPrimary"
                     android:padding="@dimen/spacing_small"
+                    android:visibility="gone"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/image"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,10 +73,12 @@
                     android:background="@drawable/rating_background"
                     android:backgroundTint="@color/black"
                     android:padding="@dimen/spacing_small"
+                    android:visibility="gone"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="8.1"></TextView>
+                    tools:text="8.1">
+                </TextView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,8 +118,8 @@
                 android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/spacing_normal"
                 android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title">
 
@@ -138,6 +141,30 @@
                     android:drawablePadding="@dimen/spacing_small"
                     android:textColor="@color/white"
                     tools:text="1" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_normal"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawableTint="?colorPrimary"
+                    android:visibility="gone"
+                    android:drawablePadding="@dimen/spacing_small"
+                    android:textColor="@color/white"
+                    tools:text="1" />
+
+                <TextView
+                    android:id="@+id/episode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_normal"
+                    android:drawableStart="@drawable/ic_episode"
+                    android:drawableTint="?colorPrimary"
+                    android:drawablePadding="@dimen/spacing_small"
+                    android:textColor="@color/white"
+                    tools:text="1" />
+
             </LinearLayout>
 
             <Button

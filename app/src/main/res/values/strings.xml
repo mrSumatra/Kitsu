@@ -4,6 +4,7 @@
     <string name="command_error">Error</string>
     <string name="command_profile_no_name">No name</string>
     <string name="min_template">%s min</string>
+    <string name="episode_template">%s Episode</string>
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">feed</string>

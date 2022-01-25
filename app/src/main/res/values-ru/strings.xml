@@ -4,6 +4,7 @@
     <string name="command_error">Ошибка</string>
     <string name="command_profile_no_name">Имя не известно</string>
     <string name="min_template">%s мин</string>
+    <string name="episode_template">%s Серий</string>
 
     <!--Bottom nav title-->
     <string name="bottom_nav_title_feed">Лента</string>

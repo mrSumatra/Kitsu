@@ -18,6 +18,7 @@ import lsvapp.kitsu.domain.entity.AnimeReaction
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
+import lsvapp.kitsu.presentation.utils.toHumanDataTime
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
 import lsvapp.kitsu.presentation.utils.widget.reaction.adapter.ReactionAdapterItem
@@ -52,11 +53,26 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
                 )
             )
         }
-        binding.ageRating.text = args.anime.ageRating.toString()
-        binding.rating.text = args.anime.averageRating
+        args.anime.ageRating?.let {
+            binding.ageRating.isVisible = true
+            binding.ageRating.text = it.toString()
+        }
+        args.anime.averageRating?.let {
+            binding.rating.isVisible = true
+            binding.rating.text = it
+        }
+        args.anime.startDate?.let {
+            binding.date.isVisible = true
+            binding.date.text = it
+        }
+
+        args.anime.episodeCount?.let {
+            binding.episode.isVisible = true
+            binding.episode.text = getString(R.string.episode_template, it.toString())
+        }
+
         binding.title.text = args.anime.canonicalTitle
         binding.userViewing.text = args.anime.userCount.toString()
-        binding.time.text = args.anime.episodeLength.toString()
         binding.time.text = getString(R.string.min_template, args.anime.episodeLength)
         binding.descContent.text = args.anime.description
     }
