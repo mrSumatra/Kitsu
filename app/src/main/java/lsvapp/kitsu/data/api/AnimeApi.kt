@@ -13,6 +13,8 @@ interface AnimeApi {
         @Query("page[limit]") size: Int? = null,
         @Query("filter[seasonYear]") seasonYear: String? = null,
         @Query("filter[streamers]") streamers: String? = null,
+        @Query("filter[season]") season: String? = null,
+        @Query("filter[categories]") category: String? = null,
     ): PageList<AnimeDto>
 
     @GET("anime/{id}")

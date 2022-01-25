@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import lsvapp.kitsu.presentation.utils.widget.category.adapter.CategoryAdapter
+import lsvapp.kitsu.presentation.utils.widget.category.adapter.CategoryAdapterItem
 
 class AnimeCategoryView @JvmOverloads constructor(
     context: Context,
@@ -23,7 +24,7 @@ class AnimeCategoryView @JvmOverloads constructor(
         setHasFixedSize(true)
     }
 
-    fun setAdapterItem(items: List<String>) {
+    fun setAdapterItem(items: List<CategoryAdapterItem>) {
         animeCategoryAdapter.items = items
     }
 }

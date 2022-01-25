@@ -7,11 +7,10 @@ class CategoryAdapterViewHolder(
     private val binding: ItemCategoryBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: String) {
-        binding.categoryTitle.text = item
-        binding.categoryTitle.setOnClickListener{
-
+    fun bind(item: CategoryAdapterItem) {
+        binding.categoryTitle.text = item.category
+        binding.categoryTitle.setOnClickListener {
+            item.action.invoke()
         }
     }
-
 }

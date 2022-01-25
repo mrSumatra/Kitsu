@@ -9,6 +9,7 @@ data class AnimeListParam(
     val seasonYear: String? = null,
     val streamers: String? = null,
     val ageRating: String? = null,
-    val season: String? = null
+    val season: String? = null,
+    val category: String? = null
 
 ) : Parcelable

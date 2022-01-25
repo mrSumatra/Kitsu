@@ -14,13 +14,17 @@ class AnimeInteractor(
         page: Int? = null,
         size: Int? = null,
         seasonYear: String? = null,
-        streamers: String? = null
+        streamers: String? = null,
+        season: String? = null,
+        category: String? = null,
     ): List<Anime> {
         val animeDto = repository.getAnime(
             page = page,
             size = size,
             seasonYear = seasonYear,
-            streamers = streamers
+            streamers = streamers,
+            season = season,
+            category = category
         )
         return animeDto.data.map {
             dtoConverter.dataToAnime(it)

@@ -16,11 +16,12 @@ import lsvapp.kitsu.databinding.FragmentAnimeDetailsBinding
 import lsvapp.kitsu.domain.entity.AnimeEpisode
 import lsvapp.kitsu.domain.entity.AnimeReaction
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
+import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
-import lsvapp.kitsu.presentation.utils.toHumanDataTime
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
 import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
+import lsvapp.kitsu.presentation.utils.widget.category.adapter.CategoryAdapterItem
 import lsvapp.kitsu.presentation.utils.widget.reaction.adapter.ReactionAdapterItem
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -121,7 +122,19 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     }
 
     private fun initCategories(categories: List<String>) {
-        binding.categories.setAdapterItem(categories)
+        binding.categories.setAdapterItem(categories.map {
+            CategoryAdapterItem(category = it) { openCategoryAnimeList(it) }
+        })
+    }
+
+    private fun openCategoryAnimeList(category: String) {
+        val param = AnimeListParam(category = category, title = category)
+        val navCommand = NavCommand.To(
+            MainTabFragmentDirections.globalActionToAnimeFragment(
+                param
+            )
+        )
+        mainRouter.onCommand(navCommand)
     }
 
     private fun initReaction(reaction: List<AnimeReaction>) {

@@ -7,7 +7,7 @@ import lsvapp.kitsu.databinding.ItemCategoryBinding
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapterViewHolder>() {
 
-    var items: List<String> = emptyList()
+    var items: List<CategoryAdapterItem> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

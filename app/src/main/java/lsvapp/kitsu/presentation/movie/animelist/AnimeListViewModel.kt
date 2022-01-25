@@ -33,7 +33,9 @@ class AnimeListViewModel(
                     page = params.key ?: 0,
                     size = params.loadSize,
                     seasonYear = param.seasonYear,
-                    streamers = param.streamers
+                    streamers = param.streamers,
+                    season = param.season,
+                    category = param.category
                 )
                 LoadResult.Page(
                     data = animeDto,
