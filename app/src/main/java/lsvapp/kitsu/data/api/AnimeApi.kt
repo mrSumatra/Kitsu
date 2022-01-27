@@ -1,5 +1,6 @@
 package lsvapp.kitsu.data.api
 
+import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.domain.entity.dto.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,10 +30,10 @@ interface AnimeApi {
     @GET("anime/{id}/categories")
     suspend fun getAnimeCategories(@Path("id") id: Long): PageList<AnimeCategoryDto>
 
-    @GET("media-reactions")
+    @GET("media-reactions?sort=-createdAt")
     suspend fun getAnimeReaction(@Query("filter[animeId]") id: Long): PageList<AnimeReactionDto>
 
-    @GET("media-reactions/{id}/relationships/user")
-    suspend fun getAnimeReactionUser(@Path("id") id: Long): DataShort
+    @GET("media-reactions/{id}/user")
+    suspend fun getAnimeReactionUser(@Path("id") id: Long): Page<UserDto>
 
 }

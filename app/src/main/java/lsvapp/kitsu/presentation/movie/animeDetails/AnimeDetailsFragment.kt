@@ -73,9 +73,17 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
             binding.episode.text = getString(R.string.episode_template, it.toString())
         }
 
+        anime.episodeLength?.let {
+            binding.time.isVisible = true
+            binding.time.text = getString(R.string.min_template, it)
+        }
+
+        anime.userCount?.let {
+            binding.userViewing.isVisible = true
+            binding.userViewing.text = it.toString()
+        }
+
         binding.title.text = anime.canonicalTitle
-        binding.userViewing.text = anime.userCount.toString()
-        binding.time.text = getString(R.string.min_template, args.anime.episodeLength)
         binding.descContent.text = anime.description
     }
 
@@ -95,15 +103,17 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     }
 
     private fun initEpisodeAdapter(episodes: List<AnimeEpisode>) {
-        binding.contentViewer.setTitle(
-            getString(
-                R.string.anime_episode_total_template,
-                args.anime.episodeCount
+        if (!episodes.isNullOrEmpty()) {
+            binding.contentViewer.setTitle(
+                getString(
+                    R.string.anime_episode_total_template,
+                    args.anime.episodeCount
+                )
             )
-        )
-        binding.contentViewer.setContent(
-            episodes.map { it.toContentItem() }
-        )
+            binding.contentViewer.setContent(
+                episodes.map { it.toContentItem() }
+            )
+        }
     }
 
     fun AnimeEpisode.toContentItem(): ContentViewerItem.Content = ContentViewerItem.Content(
@@ -123,9 +133,12 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     }
 
     private fun initCategories(categories: List<String>) {
-        binding.categories.setAdapterItem(categories.map {
-            CategoryAdapterItem(category = it) { openCategoryAnimeList(it) }
-        })
+        if (!categories.isNullOrEmpty()) {
+            binding.categoriesTitle.isVisible = true
+            binding.categories.setAdapterItem(categories.map {
+                CategoryAdapterItem(category = it) { openCategoryAnimeList(it) }
+            })
+        }
     }
 
     private fun openCategoryAnimeList(category: String) {
@@ -139,12 +152,15 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     }
 
     private fun initReaction(reaction: List<AnimeReaction>) {
-        val items = reaction.map {
-            ReactionAdapterItem(
-                reaction = it
-            ) { openProfile(it.author.id) }
+        if (!reaction.isNullOrEmpty()) {
+            binding.reactionTitle.isVisible = true
+            val items = reaction.map {
+                ReactionAdapterItem(
+                    reaction = it
+                ) { openProfile(it.author.id) }
+            }
+            binding.reaction.setAdapterItem(items)
         }
-        binding.reaction.setAdapterItem(items)
     }
 
     private fun openProfile(id: Long) {

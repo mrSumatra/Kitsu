@@ -35,9 +35,11 @@ class AnimeDetailsViewModel(
                 val animeReactionDto = async { animeInteractor.getAnimeReaction(id = animeId) }
                 val animeReaction = async {
                     animeReactionDto.await().data.map {
-                        val authorId = animeInteractor.getReactionUser(it.id).id ?: DEFAULT_USER_ID
-                        val author = userInteractor.getUserById(authorId)
-                        dtoConverter.dataToAnimeReaction(it, author = author)
+                        val author = animeInteractor.getReactionUser(it.id)
+                        dtoConverter.dataToAnimeReaction(
+                            data = it,
+                            author = dtoConverter.dataToUser(author.data)
+                        )
                     }
                 }
                 DetailsInfo.Content(
