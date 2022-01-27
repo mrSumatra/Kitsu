@@ -62,7 +62,8 @@ class DtoConverter {
         description = data.attributes.description,
         seasonNumber = data.attributes.seasonNumber,
         number = data.attributes.number,
-        length = data.attributes.length
+        length = data.attributes.length,
+        imageLink = data.attributes.thumbnail?.original
     )
 
     fun dataToGroupe(data: Data<GroupeDto>) = Groupe(

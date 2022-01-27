@@ -19,6 +19,9 @@ data class AnimeEpisodeDto(
     val number: String?,
 
     @Json(name = "length")
-    val length: String?
+    val length: String?,
+
+    @Json(name = "thumbnail")
+    val thumbnail: ThumbnailEpisode?
 
 )

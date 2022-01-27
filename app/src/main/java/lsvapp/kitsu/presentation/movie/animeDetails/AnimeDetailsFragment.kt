@@ -108,7 +108,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
 
     fun AnimeEpisode.toContentItem(): ContentViewerItem.Content = ContentViewerItem.Content(
         title = "${this.number} ${this.canonicalTitle}",
-        imageLink = args.anime.posterImage.original,
+        imageLink = this.imageLink ?: args.anime.posterImage.original,
         desc = getString(R.string.min_template, this.length)
     ) { openEpisodeDetails(episodeId = this.id, animeId = args.anime.id) }
 

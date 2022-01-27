@@ -26,7 +26,10 @@ class AnimeEpisodeViewModel(
             _state.value = try {
                 val imageLink = animeInteractor.getAnimeById(animeId).posterImage.original
                 val episode = animeInteractor.getAnimeEpisodesById(episodeId = episodeId)
-                EpisodeDetailsState.Content(episode = episode, imageLink = imageLink)
+                EpisodeDetailsState.Content(
+                    episode = episode,
+                    imageLink = episode.imageLink ?: imageLink
+                )
             } catch (e: Exception) {
                 EpisodeDetailsState.Error(message = e.message)
             }
