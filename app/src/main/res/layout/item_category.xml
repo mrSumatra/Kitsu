@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/category_title"
     android:layout_width="wrap_content"
@@ -7,10 +7,11 @@
     android:layout_margin="@dimen/spacing_small"
     android:paddingHorizontal="@dimen/spacing_normal"
     android:paddingVertical="@dimen/spacing_small"
+    android:foreground="@drawable/ripple_category"
     android:background="@drawable/category_border"
     android:textColor="@color/white"
     android:textSize="@dimen/text_body2"
     android:textStyle="bold"
     tools:text="@tools:sample/lorem">
-</TextView>
+</com.google.android.material.textview.MaterialTextView>
 
