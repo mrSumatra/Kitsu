@@ -22,18 +22,22 @@ class MovieTabViewModel(
     private fun initState() {
         viewModelScope.launch {
             _animeState.value = try {
+                val novelties = async { animeInteractor.getAnime(sort = "-createdAt") }
                 val anime = async { animeInteractor.getAnime() }
-                val actualAnime = async { animeInteractor.getAnime(seasonYear = "2022") }
+                val actualAnime = async { animeInteractor.getAnime(seasonYear = "2021") }
                 val animeByAmazon = async { animeInteractor.getAnime(streamers = "Amazon") }
+                val categories = async { animeInteractor.getCategories() }
+
                 MovieTabState.Content(
                     anime = anime.await(),
+                    novelties = novelties.await(),
                     actualAnime = actualAnime.await(),
-                    animeByAmazon = animeByAmazon.await()
+                    animeByAmazon = animeByAmazon.await(),
+                    categories = categories.await().data.map { it.attributes }
                 )
             } catch (e: Exception) {
                 MovieTabState.Error(e.message)
             }
         }
     }
-
 }

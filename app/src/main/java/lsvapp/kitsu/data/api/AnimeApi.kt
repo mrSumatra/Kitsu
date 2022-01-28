@@ -1,6 +1,5 @@
 package lsvapp.kitsu.data.api
 
-import lsvapp.kitsu.domain.entity.User
 import lsvapp.kitsu.domain.entity.dto.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,6 +15,7 @@ interface AnimeApi {
         @Query("filter[streamers]") streamers: String? = null,
         @Query("filter[season]") season: String? = null,
         @Query("filter[categories]") category: String? = null,
+        @Query("sort") sort: String? = null,
     ): PageList<AnimeDto>
 
     @GET("anime/{id}")
@@ -26,6 +26,9 @@ interface AnimeApi {
 
     @GET("episodes/{id}")
     suspend fun getAnimeEpisodesById(@Path("id") id: Long): Page<AnimeEpisodeDto>
+
+    @GET("categories")
+    suspend fun getCategories(): PageList<CategoryDto>
 
     @GET("anime/{id}/categories")
     suspend fun getAnimeCategories(@Path("id") id: Long): PageList<AnimeCategoryDto>

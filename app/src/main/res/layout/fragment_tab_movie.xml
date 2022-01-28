@@ -43,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:padding="@dimen/spacing_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +53,64 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
-                android:id="@+id/popular_content"
+            <TextView
+                android:id="@+id/title_novelties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="@string/movie_novelties_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_headline4"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/novelties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:content_view_title="@string/movie_anime_popular"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+                tools:itemCount="1"
+                tools:listitem="@layout/item_novelties" />
 
-            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+            <lsvapp.kitsu.presentation.utils.widget.content.ContentViewer
+                android:id="@+id/popular_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></lsvapp.kitsu.presentation.utils.widget.content.ContentViewer>
+
+            <TextView
+                android:id="@+id/title_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="@string/anime_episode_category"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_headline4"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="1"
+                tools:listitem="@layout/category_item" />
+
+            <lsvapp.kitsu.presentation.utils.widget.content.ContentViewer
                 android:id="@+id/actual_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:content_view_title="@string/movie_anime_actual"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+                android:layout_height="match_parent"></lsvapp.kitsu.presentation.utils.widget.content.ContentViewer>
 
-            <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+            <lsvapp.kitsu.presentation.utils.widget.content.ContentViewer
                 android:id="@+id/amazon_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:content_view_title="@string/movie_anime_by_amazon"></lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+                android:layout_height="match_parent"></lsvapp.kitsu.presentation.utils.widget.content.ContentViewer>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

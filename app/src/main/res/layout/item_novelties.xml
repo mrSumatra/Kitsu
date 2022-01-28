@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
+    android:padding="@dimen/spacing_normal">
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/black"
+        android:foreground="@drawable/image_border"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/cover"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="@+id/cover"
+        app:layout_constraintTop_toTopOf="@+id/cover"
+        app:layout_constraintWidth_percent="0.34"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:background="@drawable/rating_background"
+        android:backgroundTint="?colorPrimary"
+        android:padding="@dimen/spacing_small"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cover"
+        tools:text="8.1"></TextView>
+
+    <TextView
+        android:id="@+id/age_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
+        android:layout_marginEnd="319dp"
+        android:alpha="0.6"
+        android:background="@drawable/rating_background"
+        android:backgroundTint="@color/black"
+        android:padding="@dimen/spacing_small"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/cover"
+        app:layout_constraintEnd_toEndOf="@+id/cover"
+        tools:text="8.1"
+        tools:visibility="visible"></TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

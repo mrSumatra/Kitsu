@@ -9,4 +9,13 @@
 
     <color name="purple_alpha">#666200EE</color>
     <color name="black_alpha">#4D000000</color>
+
+    <color name="red_a200">#FF4081</color>
+    <color name="purple_a200">#7C4DFF</color>
+    <color name="blue_a200">#536DFE</color>
+    <color name="light_blue_a200">#40C4FF</color>
+    <color name="green_a200">#31D183</color>
+    <color name="yellow_a200">#C3D321</color>
+    <color name="orange_a200">#FF6E40</color>
+
 </resources>

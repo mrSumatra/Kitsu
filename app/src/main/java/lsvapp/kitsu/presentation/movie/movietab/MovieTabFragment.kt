@@ -5,17 +5,25 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.flow.collect
 import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabMovieBinding
 import lsvapp.kitsu.domain.entity.Anime
+import lsvapp.kitsu.domain.entity.dto.CategoryDto
 import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListFragmentDirections
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
+import lsvapp.kitsu.presentation.movie.movietab.adapter.CategoriesAdapter
+import lsvapp.kitsu.presentation.movie.movietab.adapter.CategoriesAdapterItem
+import lsvapp.kitsu.presentation.movie.movietab.novelties.NoveltiesAdapter
+import lsvapp.kitsu.presentation.movie.movietab.novelties.NoveltiesAdapterItem
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
-import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
+import lsvapp.kitsu.presentation.utils.widget.content.adapter.ContentViewerItem
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,12 +61,29 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
                 binding.actualContent.isVisible = state is MovieTabState.Content
 
                 if (state is MovieTabState.Content) {
+                    initNovelties(state.novelties)
                     initAnime(state.anime)
                     initAnimeActual(state.actualAnime)
+                    initCategory(state.categories)
                     initAnimeByAmazon(state.animeByAmazon)
                 }
             }
         }
+    }
+
+    private fun initNovelties(anime: List<Anime>) {
+        binding.titleNovelties.isVisible = true
+        val adapter = NoveltiesAdapter()
+        binding.novelties.layoutManager = LinearLayoutManager(context).apply {
+            orientation = RecyclerView.HORIZONTAL
+        }
+        adapter.items = anime.map {
+            NoveltiesAdapterItem(anime = it) {
+                openDetails(it)
+            }
+        }
+        binding.novelties.adapter = adapter
+        PagerSnapHelper().attachToRecyclerView(binding.novelties)
     }
 
     private fun initAnime(anime: List<Anime>) {
@@ -76,6 +101,7 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
                 title = getString(R.string.movie_all_movie_title)
             ) { openAnime(AnimeListParam()) }
         )
+        binding.popularContent.setTitle(getString(R.string.movie_anime_popular))
         binding.popularContent.setContent(items)
     }
 
@@ -93,6 +119,7 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
                 title = getString(R.string.movie_all_movie_title)
             ) { openAnime(AnimeListParam(seasonYear = season, title = "anime $season")) }
         )
+        binding.actualContent.setTitle(getString(R.string.movie_anime_actual))
         binding.actualContent.setContent(items)
     }
 
@@ -109,6 +136,7 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
                 title = getString(R.string.movie_all_movie_title)
             ) { openAnime(AnimeListParam(streamers = "Amazon", title = "by Amazon")) }
         )
+        binding.amazonContent.setTitle(getString(R.string.movie_anime_by_amazon))
         binding.amazonContent.setContent(items)
     }
 
@@ -119,6 +147,21 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
             )
         )
         mainRouter.onCommand(navCommand)
+    }
+
+    private fun initCategory(categories: List<CategoryDto>) {
+        binding.titleCategories.isVisible = true
+        val adapter = CategoriesAdapter()
+        binding.categories.adapter = adapter
+        binding.categories.layoutManager = LinearLayoutManager(context).apply {
+            orientation = RecyclerView.HORIZONTAL
+        }
+        adapter.items = categories.map {
+            CategoriesAdapterItem(
+                category = it,
+                action = { openAnime(AnimeListParam(category = it.title, title = it.title)) }
+            )
+        }
     }
 
     private fun openDetails(animeDto: Anime) {

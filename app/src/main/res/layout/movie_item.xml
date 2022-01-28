@@ -46,7 +46,8 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/image"
-                tools:text="8.1"></TextView>
+                tools:text="8.1"
+                tools:visibility="visible"></TextView>
 
             <TextView
                 android:id="@+id/age_rating"
@@ -61,7 +62,8 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/image"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="8.1"></TextView>
+                tools:text="8.1"
+                tools:visibility="visible"></TextView>
 
             <LinearLayout
                 android:id="@+id/linear_title"

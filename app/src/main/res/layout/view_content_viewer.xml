@@ -6,15 +6,33 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/content_title"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/gray200"
-        android:paddingVertical="@dimen/spacing_small"
-        android:textSize="@dimen/text_headline5"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/anime_episode_category"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_headline4"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem" />
+        tools:text="@tools:sample/lorem"
+        />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/spacing_small"
+        android:paddingStart="@dimen/spacing_normal"
+        android:textColor="@color/gray200"
+        android:textSize="@dimen/text_headline5"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="@tools:sample/lorem"
+        tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/content_recycler"
@@ -24,7 +42,7 @@
         android:visibility="visible"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintDimensionRatio="1.4:1"
-        app:layout_constraintTop_toBottomOf="@+id/content_title"
+        app:layout_constraintTop_toBottomOf="@+id/desc"
         tools:itemCount="3"
         tools:listitem="@layout/movie_item" />
 

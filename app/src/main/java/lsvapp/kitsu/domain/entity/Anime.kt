@@ -29,7 +29,7 @@ data class Anime(
 
     val averageRating: String?,
 
-    val popularityRank: Int,
+    val popularityRank: Int?,
 
     val userCount: Int?,
 

@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.utils.widget.adapter
+package lsvapp.kitsu.presentation.utils.widget.content.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

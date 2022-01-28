@@ -1,4 +1,4 @@
-package lsvapp.kitsu.presentation.utils.widget.adapter
+package lsvapp.kitsu.presentation.utils.widget.content.adapter
 
 sealed class ContentViewerItem {
     data class Content(

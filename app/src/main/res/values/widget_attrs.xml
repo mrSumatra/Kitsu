@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="ContentViewer">
         <attr name="content_view_title" format="string" />
+        <attr name="content_view_desc" format="string" />
     </declare-styleable>
 
     <declare-styleable name="CenterToolbarView">

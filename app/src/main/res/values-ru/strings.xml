@@ -17,10 +17,10 @@
     <string name="comment_no_data_title">Нет комментариев</string>
 
     <!--Movie-->
-    <string name="movie_anime_title">АНИМЕ</string>
-    <string name="movie_manga_title">МАНГА</string>
+    <string name="movie_anime_title">Аниме</string>
+    <string name="movie_manga_title">Манга</string>
     <string name="movie_all_movie_title">Показать еще</string>
-
+    <string name="movie_novelties_title">Новинки</string>
     <string name="movie_anime_popular">C высоким рейтингом</string>
     <string name="movie_anime_actual">В этом году</string>
     <string name="movie_anime_by_amazon">C amazon</string>
@@ -49,7 +49,6 @@
     <string name="profile_details_birth_date_stub">Нет даты рождения</string>
     <string name="profile_details_gender_stub">Нет гендера</string>
     <string name="profile_details_about_stub">Нет информации о пользователе</string>
-
 
 
 </resources>

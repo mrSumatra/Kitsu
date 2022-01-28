@@ -21,7 +21,7 @@ import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
-import lsvapp.kitsu.presentation.utils.widget.adapter.ContentViewerItem
+import lsvapp.kitsu.presentation.utils.widget.content.adapter.ContentViewerItem
 import lsvapp.kitsu.presentation.utils.widget.category.adapter.CategoryAdapterItem
 import lsvapp.kitsu.presentation.utils.widget.reaction.adapter.ReactionAdapterItem
 import org.koin.android.ext.android.inject

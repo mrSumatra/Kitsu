@@ -40,7 +40,7 @@
                     android:id="@+id/image_cover"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:foreground="@drawable/image_border"
+                    android:foreground="@drawable/image_border_circle"
                     android:scaleType="centerCrop"
                     android:background="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -252,12 +252,12 @@
                     android:visibility="gone"
                     tools:visibility="visible" />
 
-                <lsvapp.kitsu.presentation.utils.widget.ContentViewer
+                <lsvapp.kitsu.presentation.utils.widget.content.ContentViewer
                     android:id="@+id/contentViewer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                </lsvapp.kitsu.presentation.utils.widget.ContentViewer>
+                </lsvapp.kitsu.presentation.utils.widget.content.ContentViewer>
 
                 <TextView
                     android:id="@+id/reaction_title"

@@ -17,6 +17,7 @@ class AnimeInteractor(
         streamers: String? = null,
         season: String? = null,
         category: String? = null,
+        sort: String? = null,
     ): List<Anime> {
         val animeDto = repository.getAnime(
             page = page,
@@ -24,7 +25,8 @@ class AnimeInteractor(
             seasonYear = seasonYear,
             streamers = streamers,
             season = season,
-            category = category
+            category = category,
+            sort = sort
         )
         return animeDto.data.map {
             dtoConverter.dataToAnime(it)
@@ -53,4 +55,6 @@ class AnimeInteractor(
     suspend fun getAnimeReaction(id: Long) = repository.getAnimeReaction(id)
 
     suspend fun getReactionUser(id: Long) = repository.getReactionUser(id)
+
+    suspend fun getCategories() = repository.getCategories()
 }

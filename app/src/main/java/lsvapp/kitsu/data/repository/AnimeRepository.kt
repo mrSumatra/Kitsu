@@ -12,8 +12,17 @@ class AnimeRepository(
         streamers: String? = null,
         season: String? = null,
         category: String? = null,
+        sort: String? = null,
     ) =
-        animeApi.getAnime(page = page, size = size, seasonYear = seasonYear, streamers = streamers, season = season, category = category)
+        animeApi.getAnime(
+            page = page,
+            size = size,
+            seasonYear = seasonYear,
+            streamers = streamers,
+            season = season,
+            category = category,
+            sort = sort
+        )
 
     suspend fun getAnimeById(id: Long) = animeApi.getAnimeById(id = id)
 
@@ -26,4 +35,6 @@ class AnimeRepository(
     suspend fun getAnimeReaction(id: Long) = animeApi.getAnimeReaction(id)
 
     suspend fun getReactionUser(id: Long) = animeApi.getAnimeReactionUser(id)
+
+    suspend fun getCategories() = animeApi.getCategories()
 }

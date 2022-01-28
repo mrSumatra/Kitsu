@@ -42,7 +42,7 @@ data class AnimeDto(
     val averageRating: String?,
 
     @Json(name = "popularityRank")
-    val popularityRank: Int,
+    val popularityRank: Int?,
 
     @Json(name = "userCount")
     val userCount: Int?,
