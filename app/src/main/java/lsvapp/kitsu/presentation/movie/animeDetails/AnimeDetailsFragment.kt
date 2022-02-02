@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.PagerSnapHelper
 import coil.load
 import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
@@ -21,8 +22,8 @@ import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.utils.navigation.MainRouter
 import lsvapp.kitsu.presentation.utils.navigation.NavCommand
 import lsvapp.kitsu.presentation.utils.viewbinding.viewBinding
-import lsvapp.kitsu.presentation.utils.widget.content.adapter.ContentViewerItem
 import lsvapp.kitsu.presentation.utils.widget.category.adapter.CategoryAdapterItem
+import lsvapp.kitsu.presentation.utils.widget.content.adapter.ContentViewerItem
 import lsvapp.kitsu.presentation.utils.widget.reaction.adapter.ReactionAdapterItem
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -90,11 +91,11 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     private fun initInfo() {
         lifecycleScope.launchWhenResumed {
             viewModel.infoState.collect { state ->
-                binding.episodeLoading.isVisible = state is DetailsInfo.Loading
+                binding.loading.isVisible = state is DetailsInfo.Loading
                 binding.detailsLinear.isVisible = state is DetailsInfo.Content
 
                 if (state is DetailsInfo.Content) {
-                    initEpisodeAdapter(state.episodes)
+                    initEpisode(state.episodes)
                     initCategories(state.categories.map { it.title })
                     initReaction(state.reaction)
                 }
@@ -102,14 +103,16 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
         }
     }
 
-    private fun initEpisodeAdapter(episodes: List<AnimeEpisode>) {
-        if (!episodes.isNullOrEmpty()) {
-            binding.contentViewer.setTitle(
-                getString(
+    private fun initEpisode(episodes: List<AnimeEpisode>) {
+        if (!episodes.isNullOrEmpty() && episodes.size != 1) {
+            binding.contentViewer.isVisible = true
+            binding.episodeTitle.apply {
+                isVisible = true
+                text = getString(
                     R.string.anime_episode_total_template,
                     args.anime.episodeCount
                 )
-            )
+            }
             binding.contentViewer.setContent(
                 episodes.map { it.toContentItem() }
             )
@@ -135,6 +138,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
     private fun initCategories(categories: List<String>) {
         if (!categories.isNullOrEmpty()) {
             binding.categoriesTitle.isVisible = true
+            binding.categories.isVisible = true
             binding.categories.setAdapterItem(categories.map {
                 CategoryAdapterItem(category = it) { openCategoryAnimeList(it) }
             })
@@ -160,6 +164,7 @@ class AnimeDetailsFragment : Fragment(R.layout.fragment_anime_details) {
                 ) { openProfile(it.author.id) }
             }
             binding.reaction.setAdapterItem(items)
+            PagerSnapHelper().attachToRecyclerView(binding.reaction)
         }
     }
 

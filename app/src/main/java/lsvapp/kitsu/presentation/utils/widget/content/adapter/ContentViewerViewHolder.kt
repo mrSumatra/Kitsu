@@ -63,7 +63,7 @@ sealed class ContentViewerViewHolder<T : ContentViewerItem>(
         override fun bind(item: ContentViewerItem.AllMovie) {
             binding.title.text = item.title
 
-            binding.root.setOnClickListener {
+            binding.imageView.setOnClickListener {
                 item.action.invoke()
             }
         }

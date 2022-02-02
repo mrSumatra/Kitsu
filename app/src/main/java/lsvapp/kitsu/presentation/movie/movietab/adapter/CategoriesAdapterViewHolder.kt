@@ -13,7 +13,7 @@ class CategoriesAdapterViewHolder(
             binding.root.context.getColor(colorList[position])
         )
         binding.title.text = item.category.title
-        binding.root.setOnClickListener {
+        binding.card.setOnClickListener {
             item.action.invoke()
         }
     }

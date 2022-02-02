@@ -13,8 +13,6 @@ import lsvapp.kitsu.R
 import lsvapp.kitsu.databinding.FragmentTabMovieBinding
 import lsvapp.kitsu.domain.entity.Anime
 import lsvapp.kitsu.domain.entity.dto.CategoryDto
-import lsvapp.kitsu.presentation.maintab.MainTabFragmentDirections
-import lsvapp.kitsu.presentation.movie.animelist.AnimeListFragmentDirections
 import lsvapp.kitsu.presentation.movie.animelist.AnimeListParam
 import lsvapp.kitsu.presentation.movie.movietab.adapter.CategoriesAdapter
 import lsvapp.kitsu.presentation.movie.movietab.adapter.CategoriesAdapterItem
@@ -141,11 +139,8 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
     }
 
     private fun openAnime(param: AnimeListParam) {
-        val navCommand = NavCommand.To(
-            MainTabFragmentDirections.globalActionToAnimeFragment(
-                param
-            )
-        )
+        val navCommand =
+            NavCommand.To(MovieTabFragmentDirections.globalActionToAnimeFragment(param))
         mainRouter.onCommand(navCommand)
     }
 
@@ -158,15 +153,18 @@ class MovieTabFragment : Fragment(R.layout.fragment_tab_movie) {
         }
         adapter.items = categories.map {
             CategoriesAdapterItem(
-                category = it,
-                action = { openAnime(AnimeListParam(category = it.title, title = it.title)) }
-            )
+                category = it
+            ) { openAnime(AnimeListParam(category = it.title, title = it.title)) }
         }
     }
 
     private fun openDetails(animeDto: Anime) {
         val navCommand =
-            NavCommand.To(AnimeListFragmentDirections.globalActionToAnimeDetailsFragment(animeDto))
+            NavCommand.To(
+                MovieTabFragmentDirections.globalActionToAnimeDetailsFragment(
+                    animeDto
+                )
+            )
         mainRouter.onCommand(navCommand)
     }
 }
