@@ -6,6 +6,7 @@ import lsvapp.kitsu.presentation.feed.tab.FeedTabFragment
 import lsvapp.kitsu.presentation.group.GroupTabFragment
 import lsvapp.kitsu.presentation.movie.movietab.MovieTabFragment
 import lsvapp.kitsu.presentation.profile.CurrentProfileTabFragment
+import lsvapp.kitsu.presentation.manga.MangaTabFragment
 
 enum class MainTabs(
     val tag: TabTag,
@@ -21,6 +22,11 @@ enum class MainTabs(
         tag = TabTag.MOVIE,
         menuId = R.id.tab_movie,
         newInstanceAction = { MovieTabFragment() }
+    ),
+    MANGA(
+        tag = TabTag.MANGA,
+        menuId = R.id.tab_manga,
+        newInstanceAction = { MangaTabFragment() }
     ),
     GROPE(
         tag = TabTag.GROPE,

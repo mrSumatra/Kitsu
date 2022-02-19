@@ -18,7 +18,7 @@
 
     <!--Movie-->
     <string name="movie_anime_title">Anime</string>
-    <string name="movie_manga_title">MANGA</string>
+    <string name="movie_manga_title">Manga</string>
     <string name="movie_novelties_title">Novelties</string>
     <string name="movie_all_movie_title">View All</string>
     <string name="movie_anime_popular">High rating</string>

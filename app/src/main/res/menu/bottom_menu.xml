@@ -12,7 +12,11 @@
         android:title="@string/bottom_nav_title_movie"
         android:icon="@drawable/ic_movie"
         />
-
+    <item
+        android:id="@+id/tab_manga"
+        android:title="@string/movie_manga_title"
+        android:icon="@drawable/ic_manga"
+        />
     <item
         android:id="@+id/tab_group"
         android:title="@string/bottom_nav_title_group"
