@@ -10,7 +10,7 @@
 Экран пользователя, редактирование профеля
 
 Стек
-архитектура: MVVM, Single Activity, Navigation, Coroutines, Paging3, LiveData или SharedFlow
+архитектура: MVVM, Single Activity, Navigation, Coroutines, Paging3, LiveData или StateFlow
 DI: Koin или Dagger2
 network: Okhttp, retrofit2, Moshi
 pictures: Coil
